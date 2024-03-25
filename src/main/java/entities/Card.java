@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class Card {
     //attributes
  @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @GeneratedValue
  @Column(name="card_number")
     private long id;
     private LocalDate data_di_scadenza;
