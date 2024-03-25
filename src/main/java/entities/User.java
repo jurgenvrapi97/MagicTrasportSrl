@@ -1,18 +1,18 @@
 package entities;
 
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 public class User {
     //attributes
-    //@Id
-// @GeneratedValue(strategy = GenerationType.IDENTITY)
-//  @Column(name="user_id")
+    @Id
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="user_id")
     private long id;
     private String name;
     private String surname;
     private int age;
-//    @OneToOne(mappedBy = "user")
-//    private Card card;
+    @OneToOne(mappedBy = "user")
+    private Card card;
     //constructors
 
     public User() {
