@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="primo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AbbonamentoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/DistributoreDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enums/Stato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enums/TipoAbbonamento.java" afterDir="false" />
+    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="creazioni classi abbonamento/distribbutore + DAO SAVE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +36,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -71,11 +68,20 @@
       <option name="project" value="LOCAL" />
       <updated>1711377506928</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="creazioni classi abbonamento/distribbutore + DAO SAVE">
+      <option name="closed" value="true" />
+      <created>1711383069968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711383069968</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primo" />
-    <option name="LAST_COMMIT_MESSAGE" value="primo" />
+    <MESSAGE value="creazioni classi abbonamento/distribbutore + DAO SAVE" />
+    <option name="LAST_COMMIT_MESSAGE" value="creazioni classi abbonamento/distribbutore + DAO SAVE" />
   </component>
 </project>
