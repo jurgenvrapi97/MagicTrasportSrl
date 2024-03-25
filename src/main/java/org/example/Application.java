@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import service.TicketService;
 
-public class Main {
+public class Application {
 
     public static void main(String[] args) {
 
