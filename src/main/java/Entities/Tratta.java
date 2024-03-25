@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import jakarta.persistence.*;
 
@@ -30,4 +30,4 @@ public class Tratta {
     }
  }
 
-}
+
