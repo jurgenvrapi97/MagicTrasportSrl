@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 public class Ticket {
 
     // Chiave Primaria composta da userId
-    @Id
+
+
     @Column(name = "user_id")
     private int userId;
 
@@ -23,12 +24,15 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "distributore_id")
-    private double distributore;
+    private Distributore distributore;
 
     @ManyToOne
     @JoinColumn(name = "tratta_id")
-    private String tratta;
+    private Tratta tratta;
 
+    @ManyToOne
+    @JoinColumn(name="mezzo_id")
+    private Mezzo mezzo;
     //----------------------------//
 
     public Ticket() {
@@ -39,15 +43,15 @@ public class Ticket {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
 
     public int getTicketId() {
         return ticketId;
     }
 
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
+    }
 
     public String getValidita() {
         return validita;
@@ -57,22 +61,28 @@ public class Ticket {
         this.validita = validita;
     }
 
-
-    public double getDistributore() {
+    public Distributore getDistributore() {
         return distributore;
     }
 
-    public <Distributore> void setDistributore(Distributore distributore) {
-        this.distributore = (double) distributore;
+    public void setDistributore(Distributore distributore) {
+        this.distributore = distributore;
     }
 
-
-    public String getTratta() {
+    public Tratta getTratta() {
         return tratta;
     }
 
-    public void setTratta(String tratta) {
+    public void setTratta(Tratta tratta) {
         this.tratta = tratta;
+    }
+
+    public Mezzo getMezzo() {
+        return mezzo;
+    }
+
+    public void setMezzo(Mezzo mezzo) {
+        this.mezzo = mezzo;
     }
 }
 
