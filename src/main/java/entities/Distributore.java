@@ -82,16 +82,16 @@ public class Distributore {
         this.abbonamenti = abbonamenti;
     }
 
-    @Override
-    public String toString() {
-        return "Distributore{" +
-                "id=" + id +
-                ", stato=" + stato +
-                ", location='" + location + '\'' +
-                ", nBigliettiEmessi=" + nBigliettiEmessi +
-                ", abbonamenti=" + abbonamenti +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Distributore{" +
+//                "id=" + id +
+//                ", stato=" + stato +
+//                ", location='" + location + '\'' +
+//                ", nBigliettiEmessi=" + nBigliettiEmessi +
+//                ", abbonamenti=" + abbonamenti +
+//                '}';
+//    }
 
 
 }

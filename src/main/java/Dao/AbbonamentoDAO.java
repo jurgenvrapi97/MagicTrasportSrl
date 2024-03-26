@@ -20,11 +20,13 @@ public class AbbonamentoDAO {
         transaction.commit();
         System.out.println("Abbonamento " + abbonamento.getId() + " salvato");
     }
-    public Abbonamento findNotExpiredByCardN(int cardNumber){
-        TypedQuery<Abbonamento>  query=em.createQuery("findNotExpiredByCardN", Abbonamento.class);
+    public Abbonamento findNotExpiredByCardN(long cardNumber){
+        TypedQuery<Abbonamento>  query=em.createNamedQuery("findNotExpiredByCardN", Abbonamento.class);
         query.setParameter("cardNumber",cardNumber);
         query.setParameter("today", LocalDate.now());
-        System.out.println(query.getSingleResult());
-        return query.getSingleResult();
+        Abbonamento foundAbb= query.getSingleResult();
+        System.out.println("trovato abbonamento non scaduto:"+foundAbb);
+        return foundAbb;
+
     }
 }
