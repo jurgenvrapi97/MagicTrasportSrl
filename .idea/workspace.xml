@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="primo">
+    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="add entity Operatività">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TrattaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TrattaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TicketService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,7 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "jurgen",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/Desktop/MagicTrasportSrl"
   }
@@ -70,6 +71,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primo" />
-    <option name="LAST_COMMIT_MESSAGE" value="primo" />
+    <MESSAGE value="add entity Operatività" />
+    <option name="LAST_COMMIT_MESSAGE" value="add entity Operatività" />
   </component>
 </project>

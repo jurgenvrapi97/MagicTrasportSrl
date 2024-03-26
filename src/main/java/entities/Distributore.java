@@ -3,6 +3,7 @@ package entities;
 import enums.Stato;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Distributore {
     private Date dataEmissione;
 
     @OneToMany(mappedBy = "distributore")
-    private List<Abbonamento> abbonamenti;
+    private List<Abbonamento> abbonamenti = new ArrayList<>();
 
     @OneToMany(mappedBy = "distributore")
     private List<Ticket>tickets;
@@ -52,6 +53,8 @@ public class Distributore {
     public Stato getStato() {
         return stato;
     }
+
+
 
     public void setStato(Stato stato) {
         this.stato = stato;
@@ -100,4 +103,6 @@ public class Distributore {
                 ", abbonamenti=" + abbonamenti +
                 '}';
     }
+
+
 }
