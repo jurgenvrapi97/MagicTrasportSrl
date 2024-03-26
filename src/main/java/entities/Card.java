@@ -24,9 +24,10 @@ public class Card {
     public Card() {
     }
 
-    public Card(LocalDate data_di_sottoscrizione) {
+    public Card(LocalDate data_di_sottoscrizione,User user) {
        this.setData_di_sottoscrizione(data_di_sottoscrizione);
        this.setData_di_scadenza(data_di_sottoscrizione);
+       this.setUser(user);
     }
     //getters
 
@@ -42,14 +43,22 @@ public class Card {
         return data_di_sottoscrizione;
     }
 
-    //setters
+    public User getUser() {
+        return user;
+    }
+//setters
 
     public void setData_di_scadenza(LocalDate data_di_sottoscrizione) {
         this.data_di_scadenza = data_di_sottoscrizione.plusYears(1);
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setData_di_sottoscrizione(LocalDate data_di_sottoscrizione) {
         this.data_di_sottoscrizione = data_di_sottoscrizione;
+
     }
 
     //methods
