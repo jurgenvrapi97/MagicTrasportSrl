@@ -5,8 +5,8 @@ import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
-
 import java.util.List;
+
 
 public class TicketDAO {
 
@@ -39,6 +39,19 @@ public class TicketDAO {
         TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
         return query.getResultList();
     }
+
+
+    public List<Ticket> findAllValidTickets() {
+        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t WHERE t.validita = 'VALIDO'", Ticket.class);
+        return query.getResultList();
+    }
+
+
+    public List<Ticket> findAllExpiredTickets() {
+        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t WHERE t.validita = 'UTILIZZATO'", Ticket.class);
+        return query.getResultList();
+    }
+
 
 
 
