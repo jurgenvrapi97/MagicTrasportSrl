@@ -3,6 +3,8 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tickets")
 public class Ticket {
@@ -18,7 +20,8 @@ public class Ticket {
     @Column(name = "ticket_id")
     private int ticketId;
 
-
+    @Column(name = "data_emissione")
+    private LocalDate dataEmisione;
     @Column(name = "validita")
     private String validita;
 

@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="add entity Operatività">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TrattaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TrattaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Card.java" afterDir="false" />
+    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="riempimento del db">
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AbbonamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AbbonamentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CardsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CardsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DistributoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DistributoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MezzoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MezzoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TicketDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UsersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UsersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,12 +66,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711377506928</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="riempimento del db">
+      <option name="closed" value="true" />
+      <created>1711467518042</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711467518042</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primo" />
     <MESSAGE value="add entity Operatività" />
-    <option name="LAST_COMMIT_MESSAGE" value="add entity Operatività" />
+    <MESSAGE value="riempimento del db" />
+    <option name="LAST_COMMIT_MESSAGE" value="riempimento del db" />
   </component>
 </project>
