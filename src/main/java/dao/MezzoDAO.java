@@ -16,6 +16,12 @@ public class MezzoDAO {
         transaction.begin();
         em.persist(mezzo);
         transaction.commit();
-        System.out.println("Mezzo salvato con successo!");
+        System.out.println(mezzo.getTipo() + " salvato con successo!");
+
+    }
+
+    public Mezzo findMezzoById(long id){
+        Mezzo mezzo = em.find(Mezzo.class, id);
+        return mezzo;
     }
 }
