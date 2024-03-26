@@ -30,19 +30,19 @@ public class Application {
         TicketService ticketService = new TicketService(em);
 
 
-        Ticket ticket1 = new Ticket();
-        ticket1.setUserId(1);
-        ticket1.setValidita("2024-04-01");
+        //Ticket ticket1 = new Ticket();
+        // ticket1.setUserId(1);
+        //ticket1.setValidita("2024-04-01");
 
 
-        Ticket ticket2 = new Ticket();
-        ticket2.setUserId(2);
-        ticket2.setValidita("2024-04-02");
+        //Ticket ticket2 = new Ticket();
+        //ticket2.setUserId(2);
+        //ticket2.setValidita("2024-04-02");
 
 
         // Salva i ticket nel database utilizzando il TicketService
-        ticketService.saveTicket(ticket1);
-        ticketService.saveTicket(ticket2);
+        //ticketService.saveTicket(ticket1);
+        //ticketService.saveTicket(ticket2);
 
 
         // Trova un ticket per ID

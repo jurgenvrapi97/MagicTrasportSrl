@@ -8,8 +8,6 @@ import jakarta.persistence.*;
 public class Ticket {
 
     // Chiave Primaria composta da userId
-
-
     @Column(name = "user_id")
     private int userId;
 
@@ -31,7 +29,7 @@ public class Ticket {
     private Tratta tratta;
 
     @ManyToOne
-    @JoinColumn(name="mezzo_id")
+    @JoinColumn(name = "mezzo_id")
     private Mezzo mezzo;
     //----------------------------//
 
@@ -42,7 +40,6 @@ public class Ticket {
     public int getUserId() {
         return userId;
     }
-
 
 
     public int getTicketId() {
@@ -85,5 +82,6 @@ public class Ticket {
         this.mezzo = mezzo;
     }
 }
+
 
 
