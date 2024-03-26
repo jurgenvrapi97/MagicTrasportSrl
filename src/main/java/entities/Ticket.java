@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "tickets")
 public class Ticket {
 
-    // Chiave Primaria composta da userId e ticketId
+    // Chiave Primaria composta da userId
     @Id
     @Column(name = "user_id")
     private int userId;
@@ -17,8 +17,6 @@ public class Ticket {
     @Column(name = "ticket_id")
     private int ticketId;
 
-    // Rimuovi l'annotazione @GeneratedValue da ticketId
-    // Poiché fa parte dell'identificatore, il valore verrà generato dal database
 
     @Column(name = "validita")
     private String validita;
