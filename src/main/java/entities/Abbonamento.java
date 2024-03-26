@@ -3,21 +3,27 @@ package entities;
 import enums.TipoAbbonamento;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Abbonamento")
+@NamedQuery(
+        name = "findNotExpiredByCardN",
+        query = "SELECT a FROM Abbonamento a " +
+                "WHERE a.card.id = :cardNumber " +
+                "AND a.dataScadenza >= :today")
 public class Abbonamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "data_inizio")
-    private Date dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name = "data_scadenza")
-    private Date dataScadenza;
+    private LocalDate dataScadenza;
     @Column(name = "tipo_abbonamento")
     @Enumerated(EnumType.STRING)
     private TipoAbbonamento tipoAbbonamento;
@@ -26,13 +32,12 @@ public class Abbonamento {
     @JoinColumn(name = "distributore_id")
     private Distributore distributore;
     @OneToOne
-
     private Card card;
 
     public Abbonamento() {
     }
 
-    public Abbonamento(Date dataInizio, Date dataScadenza, TipoAbbonamento tipoAbbonamento, Distributore distributore) {
+    public Abbonamento(LocalDate dataInizio, LocalDate dataScadenza, TipoAbbonamento tipoAbbonamento, Distributore distributore) {
         this.dataInizio = dataInizio;
         this.dataScadenza = dataScadenza;
         this.tipoAbbonamento = tipoAbbonamento;
@@ -47,19 +52,23 @@ public class Abbonamento {
         this.id = id;
     }
 
-    public Date getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(Date dataInizio) {
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public Date getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(Date dataScadenza) {
+    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
@@ -88,5 +97,9 @@ public class Abbonamento {
                 ", tipoAbbonamento=" + tipoAbbonamento +
                 ", distributore=" + distributore +
                 '}';
+    }
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        return dataScadenza.isBefore(today);
     }
 }

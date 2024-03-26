@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import entities.Mezzo;
 import jakarta.persistence.EntityManager;

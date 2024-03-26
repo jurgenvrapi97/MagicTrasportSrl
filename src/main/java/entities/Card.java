@@ -8,15 +8,16 @@ import java.time.LocalDate;
 @Table(name="Card")
 public class Card {
     //attributes
- @Id
- @GeneratedValue
- @Column(name="card_number")
+    @Id
+    @GeneratedValue
+    @Column(name="card_number")
     private long id;
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
     @OneToOne
     private User user;
     @OneToOne
+    @JoinColumn(name = "abbonamento_id")
     private Abbonamento abbonamento;
 
     //constructors
@@ -25,8 +26,8 @@ public class Card {
     }
 
     public Card(LocalDate data_di_sottoscrizione) {
-       this.setData_di_sottoscrizione(data_di_sottoscrizione);
-       this.setData_di_scadenza(data_di_sottoscrizione);
+        this.setData_di_sottoscrizione(data_di_sottoscrizione);
+        this.setData_di_scadenza(data_di_sottoscrizione);
     }
     //getters
 
@@ -43,6 +44,15 @@ public class Card {
     }
 
     //setters
+
+
+    public void setAbbonamento(Abbonamento abbonamento) {
+        this.abbonamento = abbonamento;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setData_di_scadenza(LocalDate data_di_sottoscrizione) {
         this.data_di_scadenza = data_di_sottoscrizione.plusYears(1);
