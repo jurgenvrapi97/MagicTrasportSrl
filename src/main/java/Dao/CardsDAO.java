@@ -11,6 +11,11 @@ public class CardsDAO {
         this.em = em;
     }
 
+    public Card getById(long card_id){
+        Card card=em.find(Card.class,card_id);
+        return card;
+    }
+
     //methods
     public void save(Card card){
         EntityTransaction transaction=em.getTransaction();
