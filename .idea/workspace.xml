@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="primo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/DisponibilitàMezzo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,10 +32,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "francesco-branch",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/Desktop/MagicTrasportSrl"
   }
@@ -40,7 +44,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-87f3d08d" />
+        <option value="jdk-17.0.10-temurin-17.0.10-3183f394aec4-539a993e" />
       </set>
     </attachedChunks>
   </component>

@@ -25,6 +25,9 @@ public class Abbonamento {
     @ManyToOne
     @JoinColumn(name = "distributore_id")
     private Distributore distributore;
+    @OneToOne
+
+    private Card card;
 
     public Abbonamento() {
     }

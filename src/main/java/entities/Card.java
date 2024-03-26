@@ -14,8 +14,10 @@ public class Card {
     private long id;
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
-@OneToOne
-private User user;
+    @OneToOne
+    private User user;
+    @OneToOne
+    private Abbonamento abbonamento;
 
     //constructors
 

@@ -26,6 +26,9 @@ public class Distributore {
     @OneToMany(mappedBy = "distributore")
     private List<Abbonamento> abbonamenti;
 
+    @OneToMany(mappedBy = "distributore")
+    private List<Ticket>tickets;
+
     public Distributore() {
     }
 

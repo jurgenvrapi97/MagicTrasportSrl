@@ -2,9 +2,14 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="tratta")
 public class Tratta {
+    @Id
+    @GeneratedValue
+    private long id;
     @Column(name="partenza")
     private String partenza;
 
@@ -14,14 +19,9 @@ public class Tratta {
     @Column(name="percorrenza_media")
     private int percorrenza_media;
 
-    //@ManyToMany
-    //inserire poi qui la conjunction table fra Tratta e Abbonamento
 
-    //@OneToMany
-    //inserire poi qui la relazione con ticket
-
-    //@OneToMany
-    //inserire poi qui la relazione con mezzo
+    @OneToMany(mappedBy = "tratta")
+    private List<Mezzo> mezzi;
 
     public Tratta( String partenza, String destinazione, int percorrenza_media) {
         this.partenza = partenza;

@@ -26,9 +26,6 @@ public class Ticket {
     @JoinColumn(name = "distributore_id")
     private Distributore distributore;
 
-    @ManyToOne
-    @JoinColumn(name = "tratta_id")
-    private Tratta tratta;
 
     @ManyToOne
     @JoinColumn(name="mezzo_id")
@@ -69,13 +66,6 @@ public class Ticket {
         this.distributore = distributore;
     }
 
-    public Tratta getTratta() {
-        return tratta;
-    }
-
-    public void setTratta(Tratta tratta) {
-        this.tratta = tratta;
-    }
 
     public Mezzo getMezzo() {
         return mezzo;
