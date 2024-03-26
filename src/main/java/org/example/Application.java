@@ -1,5 +1,6 @@
 package org.example;
 
+import Dao.AbbonamentoDAO;
 import Dao.CardsDAO;
 import Dao.UsersDAO;
 import com.github.javafaker.Faker;
@@ -25,9 +26,14 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         EntityManager em = emf.createEntityManager();
 
 
-        // generateUsersCard(50);
-        //generateAbbonamenti(23);
-        //generateDistributori(20);
+//         generateUsersCard(50);
+//        generateAbbonamenti(23);
+//        generateDistributori(20);
+
+        AbbonamentoDAO abbonamentoDAO=new AbbonamentoDAO(em);
+        abbonamentoDAO.findNotExpiredByCardN(1);
+
+
 
         em.close();
         emf.close();

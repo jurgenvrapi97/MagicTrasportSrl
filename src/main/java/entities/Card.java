@@ -8,9 +8,9 @@ import java.time.LocalDate;
 @Table(name="Card")
 public class Card {
     //attributes
- @Id
- @GeneratedValue
- @Column(name="card_number")
+    @Id
+    @GeneratedValue
+    @Column(name="card_number")
     private long id;
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
@@ -25,10 +25,9 @@ public class Card {
     public Card() {
     }
 
-    public Card(LocalDate data_di_sottoscrizione,User user) {
-       this.setData_di_sottoscrizione(data_di_sottoscrizione);
-       this.setData_di_scadenza(data_di_sottoscrizione);
-       this.setUser(user);
+    public Card(LocalDate data_di_sottoscrizione) {
+        this.setData_di_sottoscrizione(data_di_sottoscrizione);
+        this.setData_di_scadenza(data_di_sottoscrizione);
     }
     //getters
 
@@ -44,10 +43,7 @@ public class Card {
         return data_di_sottoscrizione;
     }
 
-    public User getUser() {
-        return user;
-    }
-//setters
+    //setters
 
 
     public void setAbbonamento(Abbonamento abbonamento) {
@@ -62,13 +58,8 @@ public class Card {
         this.data_di_scadenza = data_di_sottoscrizione.plusYears(1);
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public void setData_di_sottoscrizione(LocalDate data_di_sottoscrizione) {
         this.data_di_sottoscrizione = data_di_sottoscrizione;
-
     }
 
     //methods

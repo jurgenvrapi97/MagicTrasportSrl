@@ -24,6 +24,7 @@ public class AbbonamentoDAO {
         TypedQuery<Abbonamento>  query=em.createQuery("findNotExpiredByCardN", Abbonamento.class);
         query.setParameter("cardNumber",cardNumber);
         query.setParameter("today", LocalDate.now());
+        System.out.println(query.getSingleResult());
         return query.getSingleResult();
     }
 }

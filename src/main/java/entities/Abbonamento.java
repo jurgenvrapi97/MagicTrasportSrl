@@ -9,6 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "Abbonamento")
+@NamedQuery(
+        name = "findNotExpiredByCardN",
+        query = "SELECT a FROM Abbonamento a " +
+                "WHERE a.card.id = :cardNumber " +
+                "AND a.dataScadenza >= :today")
 public class Abbonamento {
 
     @Id
@@ -92,5 +97,9 @@ public class Abbonamento {
                 ", tipoAbbonamento=" + tipoAbbonamento +
                 ", distributore=" + distributore +
                 '}';
+    }
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        return dataScadenza.isBefore(today);
     }
 }
