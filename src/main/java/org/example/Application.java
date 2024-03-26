@@ -1,10 +1,15 @@
 package org.example;
 
+import entities.Abbonamento;
+import entities.Distributore;
 import entities.Ticket;
+import enums.TipoAbbonamento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import service.TicketService;
+
+import java.time.LocalDate;
 
 public class Application {
 
@@ -12,6 +17,9 @@ public class Application {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
         EntityManager em = emf.createEntityManager();
+        Abbonamento abb=new Abbonamento(LocalDate.now(),LocalDate.now().plusMonths(1), TipoAbbonamento.MENSILE, new Distributore());
+
+        System.out.println( abb.isExpired());
 
 
 
