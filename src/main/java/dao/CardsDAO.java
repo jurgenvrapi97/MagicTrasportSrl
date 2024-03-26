@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import entities.Card;
 import entities.User;

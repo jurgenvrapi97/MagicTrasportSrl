@@ -3,6 +3,7 @@ package entities;
 import enums.Stato;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,23 +21,21 @@ public class Distributore {
     @Column(name = "n_biglietti_emessi")
     private int nBigliettiEmessi;
 
-    @Column(name = "data_emissione")
-    private Date dataEmissione;
 
     @OneToMany(mappedBy = "distributore")
-    private List<Abbonamento> abbonamenti;
+    private List<Abbonamento> abbonamenti = new ArrayList<>();
 
     @OneToMany(mappedBy = "distributore")
-    private List<Ticket>tickets;
+    private List<Ticket> tickets;
 
     public Distributore() {
     }
 
-    public Distributore(Stato stato, String location, int nBigliettiEmessi, Date dataEmissione, List<Abbonamento> abbonamenti) {
+    public Distributore(Stato stato, String location, int nBigliettiEmessi, List<Abbonamento> abbonamenti) {
         this.stato = stato;
         this.location = location;
         this.nBigliettiEmessi = nBigliettiEmessi;
-        this.dataEmissione = dataEmissione;
+
         this.abbonamenti = abbonamenti;
     }
 
@@ -52,6 +51,7 @@ public class Distributore {
     public Stato getStato() {
         return stato;
     }
+
 
     public void setStato(Stato stato) {
         this.stato = stato;
@@ -73,13 +73,6 @@ public class Distributore {
         this.nBigliettiEmessi = nBigliettiEmessi;
     }
 
-    public Date getDataEmissione() {
-        return dataEmissione;
-    }
-
-    public void setDataEmissione(Date dataEmissione) {
-        this.dataEmissione = dataEmissione;
-    }
 
     public List<Abbonamento> getAbbonamenti() {
         return abbonamenti;
@@ -96,8 +89,9 @@ public class Distributore {
                 ", stato=" + stato +
                 ", location='" + location + '\'' +
                 ", nBigliettiEmessi=" + nBigliettiEmessi +
-                ", dataEmissione=" + dataEmissione +
                 ", abbonamenti=" + abbonamenti +
                 '}';
     }
+
+
 }

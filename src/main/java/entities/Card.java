@@ -17,6 +17,7 @@ public class Card {
     @OneToOne
     private User user;
     @OneToOne
+    @JoinColumn(name = "abbonamento_id")
     private Abbonamento abbonamento;
 
     //constructors
@@ -47,6 +48,15 @@ public class Card {
         return user;
     }
 //setters
+
+
+    public void setAbbonamento(Abbonamento abbonamento) {
+        this.abbonamento = abbonamento;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setData_di_scadenza(LocalDate data_di_sottoscrizione) {
         this.data_di_scadenza = data_di_sottoscrizione.plusYears(1);

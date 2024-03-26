@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
