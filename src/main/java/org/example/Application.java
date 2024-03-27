@@ -25,7 +25,7 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
 //       generateUsersCard(50);
 //       generateAbbonamenti(23);
-       generateDistributori(20);
+//       generateDistributori(20);
 
 
         AbbonamentoDao abbonamentoDAO=new AbbonamentoDao(em);

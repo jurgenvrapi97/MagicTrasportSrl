@@ -9,6 +9,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Distributore")
+@NamedQuery(
+        name = "findBigliettiEmessiByLocation",
+        query = "SELECT d.nBigliettiEmessi FROM Distributore d WHERE d.location = :location"
+)
 public class Distributore {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
