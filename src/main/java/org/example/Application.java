@@ -171,9 +171,13 @@ public class Application {
             case 1:
         } */
 
-    //SCANNER: LATO UTENTE (da completare)
+
+
+
+    //---------------------------------------------------------------------------//
+    /*SCANNER: LATO UTENTE (da completare)
     int scelta = 0;
-    long mezzo_id, tratta_id, ticket_id;
+    long  tratta_id, ticket_id;
     Scanner scanner = new Scanner(System.in);
     do
 
@@ -187,10 +191,10 @@ public class Application {
 
         int scelta = scanner.nextInt();
         switch (scelta) {
-           /* case 0:
-                System.out.println("Uscita dal programma in corso...");
-                System.out.println("Grazie per aver utilizzato i nostri servizi");
-                scanner.close();*/
+           // case 0:
+              //  System.out.println("Uscita dal programma in corso...");
+               // System.out.println("Grazie per aver utilizzato i nostri servizi");
+              //  scanner.close();
 
             case 1:
                 System.out.println("1.Acquista biglietto");
@@ -220,11 +224,8 @@ public class Application {
 
                         case 2:
                     System.out.println("Inserisci il numero della tua card");
-
                 }
-
-        }
-
-    }
+          }
+    }*/
 
 }
