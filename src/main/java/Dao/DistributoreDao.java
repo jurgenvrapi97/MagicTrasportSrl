@@ -4,10 +4,10 @@ import entities.Distributore;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class DistributoreDAO {
+public class DistributoreDao {
     private final EntityManager em;
 
-    public DistributoreDAO(EntityManager em) {
+    public DistributoreDao(EntityManager em) {
         this.em = em;
     }
 

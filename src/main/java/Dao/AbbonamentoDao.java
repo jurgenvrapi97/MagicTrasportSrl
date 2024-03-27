@@ -6,10 +6,10 @@ import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
 
-public class AbbonamentoDAO {
+public class AbbonamentoDao {
     private final EntityManager em;
 
-    public AbbonamentoDAO(EntityManager em) {
+    public AbbonamentoDao(EntityManager em) {
         this.em = em;
     }
 

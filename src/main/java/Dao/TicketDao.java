@@ -1,18 +1,20 @@
 package Dao;
 
 
+import entities.Mezzo;
 import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
 import java.util.List;
 
-
-public class TicketDAO {
+public class TicketDao {
 
     private final EntityManager entityManager;
 
-    public TicketDAO(EntityManager entityManager) {
+    public TicketDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -31,6 +33,34 @@ public class TicketDAO {
         }
     }
 
+    public void ConvalidazioneBiglietto(Ticket ticket) {
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        try {
+            transaction.begin();
+            ticket.setValidita(null);
+            entityManager.merge(ticket);
+            transaction.commit();
+            System.out.println("Il biglietto è stato convalidato con successo!");
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            System.err.println("Si è verificato un errore durante la convalida del biglietto: " + e.getMessage());
+        }
+    }
+    public int getBigliettiConvalidatiPerMezzo(Mezzo mezzo, LocalDate data) {
+        try {
+            return entityManager.createQuery("SELECT COUNT(t) FROM Ticket t WHERE t.mezzo = :mezzo AND t.dataEmisione <= :data AND t.validita = 'Vidimato'", Long.class)
+                    .setParameter("mezzo", mezzo)
+                    .setParameter("data", data)
+                    .getSingleResult()
+                    .intValue();
+        } catch (Exception e) {
+            System.err.println("Si è verificato un errore durante il recupero del numero di biglietti vidimati per il mezzo: " + e.getMessage());
+            return 0;
+        }
+    }
     public Ticket findTicketById(int ticketId) {
         return entityManager.find(Ticket.class, ticketId);
     }
@@ -39,19 +69,6 @@ public class TicketDAO {
         TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
         return query.getResultList();
     }
-
-
-    public List<Ticket> findAllValidTickets() {
-        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t WHERE t.validita = 'VALIDO'", Ticket.class);
-        return query.getResultList();
-    }
-
-
-    public List<Ticket> findAllExpiredTickets() {
-        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t WHERE t.validita = 'UTILIZZATO'", Ticket.class);
-        return query.getResultList();
-    }
-
 
 
 

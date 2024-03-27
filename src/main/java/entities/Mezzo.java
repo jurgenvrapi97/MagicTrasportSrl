@@ -1,5 +1,6 @@
 package entities;
 
+
 import enums.TipoMezzo;
 import jakarta.persistence.*;
 
