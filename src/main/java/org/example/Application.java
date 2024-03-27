@@ -35,6 +35,8 @@ public class Application {
         DistributoreDao distributoreDao = new DistributoreDao(em);
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
+        abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
+        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
 
 
         em.close();
@@ -137,6 +139,7 @@ public class Application {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
+}
 
 
     //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
@@ -170,6 +173,55 @@ public class Application {
             return;
 
             case 1:
+              System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
+//            long Mezzo_id = Long.parseLong(scanner.nextLine());
+//            md.biglietti_vidimati(md.findMezzoById(mezzo_id));
+//            break;
+//
+//            case 2:
+//            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+//            LocalDate data = LocalDate.parse(scanner.nextLine());
+//            List<Ticket> ticket = rd.ticketsForDate(data);
+//
+//            if (ticket.isEmpty()) {
+//                System.out.println("Non ci sono biglietti emessi in questa data.");
+//            } else {
+//                System.out.println("Numero biglietti emessi in data " + data + " :");
+//                for (Ticket tickets1 : ticket) {
+//                    System.out.println(tickets1);
+//                }
+//            }
+
+            case 3:
+             System.out.println("Immetti l'id del distributore:");
+             long distributore_Id = Long.parseLong(scanner.nextLine());
+             System.out.println("Questo distributore ha venduto " + rd.nBigliettiEmessi(distributore_id).size() + " ticket");
+             break;
+
+
+            case 4:
+             System.out.println("Immetti una data per vedere lo stato del mezzo:");
+             String input = scanner.nextLine();
+             LocalDate StatoMezzo;
+             try {
+             StatoMezzo = LocalDate.parse(input);
+             } catch (DateTimeParseException e) {
+             System.out.println("Data non valida. Accertati di inserire la data nel formato YYYY-MM-DD.");
+            break;
+            }
+
+            System.out.println("Immetti l'id del mezzo di cui vuoi vedere lo stato nella data precedentemente selezionata:");
+            mezzo_Id = Long.parseLong(scanner.nextLine());
+            Mezzo mezzoX = em.find(Mezzo.class, mezzo_Id);
+
+            if (mezzoX != null | dataStatoVeicolo != null) {
+            System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
+            md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoX);
+            } else {
+             System.out.println("Non è stato trovato alcun mezzo con id: " + mezzoId + " in data " + dataStatoVeicolo);
+            }
+             break;
+
 <<<<<<< HEAD
         } */
 
@@ -229,6 +281,7 @@ public class Application {
                 }
           }
     }*/
+
 /*
 =======
             System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
@@ -252,5 +305,5 @@ public class Application {
 
         } 
 
->>>>>>> master  */
-}
+ */
+

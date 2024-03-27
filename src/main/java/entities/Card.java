@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="Card")
+@NamedQuery(name="findIsExpired",query="SELECT c FROM Card c WHERE c.id=:id AND c.data_di_scadenza >=:today"
+)
 public class Card {
     //attributes
     @Id
@@ -70,5 +72,9 @@ public class Card {
                 ", data_di_scadenza=" + data_di_scadenza +
                 ", data_di_sottoscrizione=" + data_di_sottoscrizione +
                 '}';
+    }
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        return data_di_scadenza.isBefore(today);
     }
 }

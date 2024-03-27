@@ -54,11 +54,5 @@ public class DistributoreDao {
         System.out.println("distributori attivi trovati: "+distributoriAttivi.toString());
         return distributoriAttivi;
     }
-//    public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
-//        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
-//        query.setParameter("location",location);
-//        List <Abbonamento>foundAbbonamenti=query.getResultList();
-//        System.out.println("abbonamenti emessi da distributore in "+location+" :"+foundAbbonamenti);
-//        return foundAbbonamenti;
-//    }
+
 }
