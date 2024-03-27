@@ -33,7 +33,7 @@ public class TicketDao {
         }
     }
 
-    public void ConvalidazioneBiglietto(Ticket ticket) {
+    public static void ConvalidazioneBiglietto(Ticket ticket) {
         EntityTransaction transaction = entityManager.getTransaction();
 
         try {
@@ -61,7 +61,7 @@ public class TicketDao {
             return 0;
         }
     }
-    public Ticket findTicketById(int ticketId) {
+    public static Ticket findTicketById(int ticketId) {
         return entityManager.find(Ticket.class, ticketId);
     }
 
