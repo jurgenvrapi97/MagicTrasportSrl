@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 
 public class Application {
-private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
+
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-
 
 
 //       generateUsersCard(50);
@@ -30,12 +30,11 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 //       generateDistributori(20);
 
 
-        AbbonamentoDao abbonamentoDAO=new AbbonamentoDao(em);
+        AbbonamentoDao abbonamentoDAO = new AbbonamentoDao(em);
         abbonamentoDAO.findNotExpiredByCardN(1);
-        DistributoreDao distributoreDao=new DistributoreDao(em);
+        DistributoreDao distributoreDao = new DistributoreDao(em);
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
-
 
 
         em.close();
@@ -44,7 +43,7 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
     }
 
-    public static void generateUsersCard(int numUsers){
+    public static void generateUsersCard(int numUsers) {
         Faker faker = new Faker(new Locale("it"));
         EntityManager em = emf.createEntityManager();
 
@@ -53,11 +52,11 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
             User user = new User();
             user.setName(faker.name().firstName());
             user.setSurname(faker.name().lastName());
-            user.setAge(faker.number().numberBetween(18,100));
+            user.setAge(faker.number().numberBetween(18, 100));
 
 
-            if (faker.random().nextBoolean()){
-                Card card = new Card(convertToLocalDate( faker.date().past(365, TimeUnit.DAYS)));
+            if (faker.random().nextBoolean()) {
+                Card card = new Card(convertToLocalDate(faker.date().past(365, TimeUnit.DAYS)));
                 card.setUser(user);
                 user.setCard(card);
                 em.persist(card);
@@ -69,7 +68,7 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         em.close();
     }
 
-    public static void generateAbbonamenti(int numAbbonamenti){
+    public static void generateAbbonamenti(int numAbbonamenti) {
         Faker faker = new Faker(new Locale("it"));
         EntityManager em = emf.createEntityManager();
 
@@ -105,7 +104,6 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
         em.close();
     }
-
 
 
     public static void generateDistributori(int numDistributori) {
@@ -172,4 +170,61 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
             case 1:
         } */
+
+    //SCANNER: LATO UTENTE (da completare)
+    int scelta = 0;
+    long mezzo_id, tratta_id, ticket_id;
+    Scanner scanner = new Scanner(System.in);
+    do
+
+    {
+        System.out.println("----------- BENVENUTO NELLA SEZIONE UTENTE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
+        System.out.println("1. Biglietteria");
+        System.out.println("2. Abbonamento");
+        System.out.println("3. Card per abbonamento");
+        System.out.println("0. Esci");
+
+
+        int scelta = scanner.nextInt();
+        switch (scelta) {
+           /* case 0:
+                System.out.println("Uscita dal programma in corso...");
+                System.out.println("Grazie per aver utilizzato i nostri servizi");
+                scanner.close();*/
+
+            case 1:
+                System.out.println("1.Acquista biglietto");
+                System.out.println("2.Convalida biglietto");
+
+                int scelta1 = scanner.nextInt();
+                switch (scelta1){
+                    case 1:
+                        System.out.println("Biglietto acquistato con successo!");
+                        break;
+
+                    case 2:
+                        System.out.println("Inserisci l'ID del biglietto per convalidarlo");
+                        int ticketId = scanner.nextInt();
+                        break;
+                }
+           break;
+            case 2:
+                System.out.println("Acquista un abbonamento");
+                System.out.println("Verifica data di scadenza abbonamento");
+
+                int scelta2 = scanner.nextInt();
+                switch (scelta2) {
+                    case 1:
+                        System.out.println("Inserisci il numero della tua card");
+                        break;
+
+                        case 2:
+                    System.out.println("Inserisci il numero della tua card");
+
+                }
+
+        }
+
+    }
+
 }
