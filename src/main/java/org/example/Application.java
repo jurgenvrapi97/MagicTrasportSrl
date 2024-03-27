@@ -26,9 +26,9 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         EntityManager em = emf.createEntityManager();
 
 
-//         generateUsersCard(50);
-//        generateAbbonamenti(23);
-//        generateDistributori(20);
+//       generateUsersCard(50);
+//       generateAbbonamenti(23);
+       generateDistributori(20);
 
         AbbonamentoDAO abbonamentoDAO=new AbbonamentoDAO(em);
         abbonamentoDAO.findNotExpiredByCardN(1);
@@ -71,13 +71,26 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         EntityManager em = emf.createEntityManager();
 
         List<User> users = em.createQuery("SELECT u FROM User u WHERE u.card IS NOT NULL", User.class).getResultList();
+        List<Distributore> distributori = em.createQuery("SELECT d FROM Distributore d", Distributore.class).getResultList();
         for (int i = 0; i < numAbbonamenti && i < users.size(); i++) {
             em.getTransaction().begin();
             Abbonamento abbonamento = new Abbonamento();
             abbonamento.setDataInizio(convertToLocalDate(faker.date().past(30, TimeUnit.DAYS)));
-            abbonamento.setDataScadenza(convertToLocalDate(faker.date().future(365, TimeUnit.DAYS)));
-            abbonamento.setTipoAbbonamento(TipoAbbonamento.values()[faker.random().nextInt(TipoAbbonamento.values().length)]);
+            TipoAbbonamento tipo = TipoAbbonamento.values()[faker.random().nextInt(TipoAbbonamento.values().length)];
+            abbonamento.setTipoAbbonamento(tipo);
+            switch (tipo) {
+                case MENSILE:
+                    abbonamento.setDataScadenza(abbonamento.getDataInizio().plusMonths(1));
+                    break;
+                case SETTIMANALE:
+                    abbonamento.setDataScadenza(abbonamento.getDataInizio().plusWeeks(1));
+                    break;
+                default:
+                    abbonamento.setDataScadenza(abbonamento.getDataInizio().plusYears(1));
+                    break;
+            }
             abbonamento.setCard(users.get(i).getCard());
+            abbonamento.setDistributore(distributori.get(faker.random().nextInt(distributori.size())));
             em.persist(abbonamento);
 
             Card card = users.get(i).getCard();
@@ -89,6 +102,8 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
         em.close();
     }
+
+
 
     public static void generateDistributori(int numDistributori) {
         Faker faker = new Faker(new Locale("it"));
