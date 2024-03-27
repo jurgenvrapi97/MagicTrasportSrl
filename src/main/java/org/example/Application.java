@@ -229,7 +229,7 @@ public class Application {
                 }
           }
     }*/
-
+/*
 =======
             System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
             long Mezzo_id = Long.parseLong(scanner.nextLine());
@@ -251,6 +251,6 @@ public class Application {
             }
 
         } 
-        */
->>>>>>> master
+
+>>>>>>> master  */
 }
