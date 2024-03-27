@@ -71,4 +71,8 @@ public class Card {
                 ", data_di_sottoscrizione=" + data_di_sottoscrizione +
                 '}';
     }
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        return data_di_scadenza.isBefore(today);
+    }
 }
