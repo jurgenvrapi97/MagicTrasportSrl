@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.Scanner;
 
 public class Application {
 private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
@@ -134,4 +135,37 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
+
+
+    /*  Inizio ad impostare la struttura dello scanner dalla parte del gestore
+
+    int scelta = 0;
+        long mezzo_id, tratta_id, ticket_id;
+    Scanner scanner = new Scanner(System.in);
+    do {
+
+        System.out.println("----------- BENVENUTO NELLA SEZIONE GESTIONE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
+
+        System.out.println("1) Cerca i biglietti vidimati su un mezzo specifico; ");
+        System.out.println("2) Cerca i biglietti emessi in base alla data; ");
+        System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
+        System.out.println("4) Cerca i peridodi di servizio e manutenzione di un mezzo in base alla data;");
+        System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
+        System.out.println("6) Verifica la validità dell'abbonamento di un'utente in base al suo numero di tessera");
+        System.out.println("0) Esci dal programma; ");
+
+
+        scelta = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (scelta) {
+
+            case 0:
+            System.out.println("Uscita dal programma in corso...");
+            System.out.println("Grazie per aver utilizzato i nostri servizi");
+            scanner.close();
+            return;
+
+            case 1:
+        } */
 }
