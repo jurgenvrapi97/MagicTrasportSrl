@@ -1,8 +1,14 @@
 package Dao;
 
+import entities.Abbonamento;
 import entities.Distributore;
+import entities.Ticket;
+import entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class DistributoreDao {
     private final EntityManager em;
@@ -11,6 +17,7 @@ public class DistributoreDao {
         this.em = em;
     }
 
+    //methods
     public void saveDistributore(Distributore distributore) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -18,4 +25,40 @@ public class DistributoreDao {
         transaction.commit();
         System.out.println("Distributore " + distributore.getId() + " salvato");
     }
+    public Distributore getById(int distributore_id){
+        Distributore distributore=em.find(Distributore.class,distributore_id);
+        if(distributore.equals(null))throw new RuntimeException();
+        else{
+            System.out.println("trovato distributore: "+distributore.toString());
+            return distributore;
+        }
+    }
+    public void delete(int distributore_id){
+        Distributore distributoreToDelete=this.getById(distributore_id);
+        EntityTransaction transaction=em.getTransaction();
+        transaction.begin();
+        em.remove(distributoreToDelete);
+        transaction.commit();
+        System.out.println("distributore"+ distributoreToDelete.toString()+" eliminato");
+    }
+    public List<Ticket> findBigliettiEmessiByLocation(String location){
+        TypedQuery<Ticket> query=em.createNamedQuery("findBigliettiEmessiByLocation", Ticket.class);
+        query.setParameter("location",location);
+        List <Ticket>foundTickets=query.getResultList();
+        System.out.println("biglietti emessi da distributore in "+location+" :"+foundTickets);
+        return foundTickets;
+    }
+    public List<Distributore>findDistributoreAttivo(){
+        TypedQuery<Distributore>query= em.createNamedQuery("findDistributoreAttivo", Distributore.class);
+        List<Distributore>distributoriAttivi=query.getResultList();
+        System.out.println("distributori attivi trovati: "+distributoriAttivi.toString());
+        return distributoriAttivi;
+    }
+//    public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
+//        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
+//        query.setParameter("location",location);
+//        List <Abbonamento>foundAbbonamenti=query.getResultList();
+//        System.out.println("abbonamenti emessi da distributore in "+location+" :"+foundAbbonamenti);
+//        return foundAbbonamenti;
+//    }
 }
