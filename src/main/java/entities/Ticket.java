@@ -79,6 +79,16 @@ public class Ticket {
     public void setMezzo(Mezzo mezzo) {
         this.mezzo = mezzo;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "userId=" + userId +
+                ", ticketId=" + ticketId +
+                ", dataEmisione=" + dataEmisione +
+                ", validità='" + validita + '\'' +
+                '}'+"\n";
+    }
 }
 
 
