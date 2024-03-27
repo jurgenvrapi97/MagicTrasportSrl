@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="fix data scadenza abonamenti">
+    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="creazione del db e vidimazione dei biglietti">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TicketDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Operatività.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Operatività.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Tratta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Tratta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,17 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Application.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "jurgen",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/Desktop/MagicTrasportSrl"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;jurgen&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/MagicTrasportSrl&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711527957414</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="creazione del db e vidimazione dei biglietti">
+      <option name="closed" value="true" />
+      <created>1711539435741</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711539435741</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -88,6 +102,7 @@
     <MESSAGE value="add entity Operatività" />
     <MESSAGE value="riempimento del db" />
     <MESSAGE value="fix data scadenza abonamenti" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix data scadenza abonamenti" />
+    <MESSAGE value="creazione del db e vidimazione dei biglietti" />
+    <option name="LAST_COMMIT_MESSAGE" value="creazione del db e vidimazione dei biglietti" />
   </component>
 </project>

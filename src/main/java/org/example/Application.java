@@ -1,9 +1,6 @@
 package org.example;
 
-import Dao.AbbonamentoDAO;
-import Dao.CardsDAO;
-import Dao.TicketDAO;
-import Dao.UsersDAO;
+import Dao.*;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
@@ -32,6 +29,9 @@ public class Application {
         // ho aggiunto i metodi e il dao per timbrare uno specifico biglietto con il suo id per far si che lo vidimi
 //        TicketDAO ticketDAO = new TicketDAO(em);
 //        ticketDAO.vidimareTicket(1);
+        OperativitaDAO operativitaDAO = new OperativitaDAO(em);
+        operativitaDAO.getManutenzioniMezzo(7);
+        operativitaDAO.getServiziMezzo(7);
 
         // per riempire il database non si possono usare tutti i metoti contemporaneamente c'è un ordine
 
@@ -52,6 +52,11 @@ public class Application {
 
         // per adesso operatività non lo eseguite per pensare meglio a come farlo funzionare per ottenere cosa ci serve
 //       generateOperativita(30);
+
+        //generateOperativita();
+
+
+
 
         em.close();
         emf.close();
@@ -246,25 +251,38 @@ public class Application {
 
 
 
-    public static void generateOperativita(int numOperativita) {
-        Faker faker = new Faker(new Locale("it"));
+    public static void generateOperativita() {
+
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
 
         List<Mezzo> mezzi = em.createQuery("SELECT m FROM Mezzo m", Mezzo.class).getResultList();
-        for (int i = 0; i < numOperativita && i < mezzi.size(); i++) {
-            em.getTransaction().begin();
-            Operatività operativita = new Operatività();
-            operativita.setDataInizioManutenzione(LocalDate.now().minusDays(faker.number().numberBetween(1, 30)));
-            operativita.setDataFineManutenzione(LocalDate.now().minusDays(faker.number().numberBetween(1, 30)));
-            operativita.setDataInizioServizio(LocalDate.now().minusDays(faker.number().numberBetween(1, 30)));
-            operativita.setDataFineServizio(LocalDate.now().plusDays(faker.number().numberBetween(1, 30)));
-            operativita.setMezzo(mezzi.get(i));
-            em.persist(operativita);
-            em.getTransaction().commit();
+
+
+        Faker faker = new Faker(new Locale("it"));
+
+        for (Mezzo mezzo : mezzi) {
+
+            Operatività manutenzione = new Operatività();
+            manutenzione.setDataInizioManutenzione(faker.date().past(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            manutenzione.setDataFineManutenzione(faker.date().future(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            manutenzione.setMezzo(mezzo);
+
+
+            Operatività servizio = new Operatività();
+            servizio.setDataInizioServizio(manutenzione.getDataFineManutenzione().plusDays(1));
+            servizio.setDataFineServizio(servizio.getDataInizioServizio().plusDays(30));
+            servizio.setMezzo(mezzo);
+
+
+            em.persist(manutenzione);
+            em.persist(servizio);
         }
 
+        em.getTransaction().commit();
         em.close();
     }
+
 
 
     private static LocalDate convertToLocalDate(java.util.Date date) {

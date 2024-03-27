@@ -23,11 +23,30 @@ public class Tratta {
     @OneToMany(mappedBy = "tratta")
     private List<Mezzo> mezzi;
 
+    public Tratta(){};
+
     public Tratta( String partenza, String destinazione, int percorrenza_media) {
         this.partenza = partenza;
         this.destinazione = destinazione;
         this.percorrenza_media = percorrenza_media;
     }
- }
+
+    public void setPartenza(String partenza) {
+        this.partenza = partenza;
+    }
+
+    public void setDestinazione(String destinazione) {
+        this.destinazione = destinazione;
+    }
+
+    public void setPercorrenza_media(int percorrenza_media) {
+        this.percorrenza_media = percorrenza_media;
+    }
+
+    public void setMezzi(List<Mezzo> mezzi) {
+        this.mezzi = mezzi;
+    }
+
+}
 
 
