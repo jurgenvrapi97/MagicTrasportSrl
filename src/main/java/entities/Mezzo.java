@@ -28,18 +28,16 @@ public class Mezzo {
     @Column(name = "biglietti_vidimati")
     private int biglietti_vidimati;
 
-    @Column(name = "data_vidimazione")
-    private Date data_vidimazione;
 
 
     public Mezzo(){}
-    public Mezzo(long id, TipoMezzo tipo, int biglietti_vidimati, Date data_vidimazione) {
+    public Mezzo(long id, TipoMezzo tipo, int biglietti_vidimati) {
         this.id = id;
 
         this.tipo = tipo;
 
         this.biglietti_vidimati = biglietti_vidimati;
-        this.data_vidimazione = data_vidimazione;
+
     }
 
     public long getId() {
@@ -72,13 +70,13 @@ public class Mezzo {
         this.biglietti_vidimati = biglietti_vidimati;
     }
 
-    public Date getData_vidimazione() {
-        return data_vidimazione;
+
+
+    public void setTratta(Tratta tratta) {
+        this.tratta = tratta;
     }
 
-    public void setData_vidimazione(Date data_vidimazione) {
-        this.data_vidimazione = data_vidimazione;
-    }
+
 
     @Override
     public String toString() {
@@ -86,7 +84,13 @@ public class Mezzo {
                 "id=" + id +
                 ", tipo=" + tipo +
                 ", biglietti_vidimati=" + biglietti_vidimati +
-                ", data_vidimazione=" + data_vidimazione +
+
                 '}';
+    }
+
+
+
+    public void incrementaBigliettiVidimati() {
+        this.biglietti_vidimati++;
     }
 }

@@ -1,9 +1,11 @@
 package Dao;
 
 
+import entities.Mezzo;
 import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -56,5 +58,40 @@ public class TicketDAO {
             e.printStackTrace();
         }
     }
+
+
+    public void vidimareTicket(int ticketId) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+
+            // Cerca il biglietto nel database utilizzando l'ID
+            Ticket ticket = entityManager.find(Ticket.class, ticketId);
+            if (ticket == null) {
+                throw new IllegalArgumentException("Nessun biglietto trovato con l'ID: " + ticketId);
+            }
+
+            // Vidima il biglietto
+            ticket.vidimare();
+
+            // Incrementa il contatore del mezzo
+            Mezzo mezzo = ticket.getMezzo();
+            mezzo.incrementaBigliettiVidimati();
+
+            // Salva le modifiche
+            entityManager.merge(ticket);
+            entityManager.merge(mezzo);
+
+            transaction.commit();
+            System.out.println("Biglietto vidimato correttamente!");
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
