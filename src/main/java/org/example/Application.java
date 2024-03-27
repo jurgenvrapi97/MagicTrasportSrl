@@ -32,7 +32,8 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         AbbonamentoDao abbonamentoDAO=new AbbonamentoDao(em);
         abbonamentoDAO.findNotExpiredByCardN(1);
         DistributoreDao distributoreDao=new DistributoreDao(em);
-        distributoreDao.findAbbonamentiEmessiByLocation()
+        distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
+        distributoreDao.findDistributoreAttivo();
 
 
 

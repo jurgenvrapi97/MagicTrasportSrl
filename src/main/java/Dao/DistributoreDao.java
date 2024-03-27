@@ -45,13 +45,20 @@ public class DistributoreDao {
         TypedQuery<Ticket> query=em.createNamedQuery("findBigliettiEmessiByLocation", Ticket.class);
         query.setParameter("location",location);
         List <Ticket>foundTickets=query.getResultList();
-        System.out.println("biglietti emessi da distributore in"+location+" :"+foundTickets);
+        System.out.println("biglietti emessi da distributore in "+location+" :"+foundTickets);
         return foundTickets;
-    }public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
-        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
-        query.setParameter("location",location);
-        List <Abbonamento>foundAbbonamenti=query.getResultList();
-        System.out.println("abbonamenti emessi da distributore in"+location+" :"+foundAbbonamenti);
-        return foundAbbonamenti;
     }
+    public List<Distributore>findDistributoreAttivo(){
+        TypedQuery<Distributore>query= em.createNamedQuery("findDistributoreAttivo", Distributore.class);
+        List<Distributore>distributoriAttivi=query.getResultList();
+        System.out.println("distributori attivi trovati: "+distributoriAttivi.toString());
+        return distributoriAttivi;
+    }
+//    public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
+//        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
+//        query.setParameter("location",location);
+//        List <Abbonamento>foundAbbonamenti=query.getResultList();
+//        System.out.println("abbonamenti emessi da distributore in "+location+" :"+foundAbbonamenti);
+//        return foundAbbonamenti;
+//    }
 }
