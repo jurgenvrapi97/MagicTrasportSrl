@@ -27,6 +27,7 @@ public class UsersDao {
             return user;
         }
     }
+
     public void delete(long user_id){
        User userToDelete=this.getById(user_id);
         EntityTransaction transaction=em.getTransaction();

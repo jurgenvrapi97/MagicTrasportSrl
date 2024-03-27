@@ -99,6 +99,6 @@ public class Distributore {
                 "id=" + id +
                 ", stato=" + stato +
                 ", location='" + location + '\'' +
-                '}';
+                '}'+"\n";
     }
 }

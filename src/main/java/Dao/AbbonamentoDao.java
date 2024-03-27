@@ -43,7 +43,7 @@ public class AbbonamentoDao {
         query.setParameter("start_date",startDate);
         query.setParameter("end_date",endDate);
         try{List<Abbonamento>result=query.getResultList();
-            System.out.println("abbonamenti subscribed nel periodo dal: "+startDate+" al "+endDate+": "+result.toString());
+            System.out.println("abbonamenti subscribed nel periodo dal: "+startDate+" al "+endDate+": "+result.toString()+"\n");
             return result;}
         catch(NoResultException ex){
             System.out.println("Nessun abbonamento trovato per questo lasso di tempo");

@@ -2,6 +2,7 @@ package org.example;
 
 import Dao.AbbonamentoDao;
 import Dao.DistributoreDao;
+import Dao.UsersDao;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
