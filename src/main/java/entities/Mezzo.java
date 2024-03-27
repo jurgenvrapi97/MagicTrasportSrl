@@ -19,13 +19,12 @@ public class Mezzo {
     @Enumerated(EnumType.STRING)
     private TipoMezzo tipo;
 
-
-    @Column(name = "tratta_id")
-
-    private long tratta_id;
-
     @OneToMany(mappedBy = "mezzo")
     private List<Ticket> tickets;
+    @ManyToOne
+    private Tratta tratta;
+    @OneToMany(mappedBy = "mezzo")
+    private List<Operatività>operatività;
     @Column(name = "biglietti_vidimati")
     private int biglietti_vidimati;
 
@@ -34,11 +33,11 @@ public class Mezzo {
 
 
     public Mezzo(){}
-    public Mezzo(long id, TipoMezzo tipo, long tratta_id, int biglietti_vidimati, Date data_vidimazione) {
+    public Mezzo(long id, TipoMezzo tipo, int biglietti_vidimati, Date data_vidimazione) {
         this.id = id;
 
         this.tipo = tipo;
-        this.tratta_id = tratta_id;
+
         this.biglietti_vidimati = biglietti_vidimati;
         this.data_vidimazione = data_vidimazione;
     }
@@ -61,13 +60,9 @@ public class Mezzo {
         this.tipo = tipo;
     }
 
-    public long getTratta_id() {
-        return tratta_id;
-    }
 
-    public void setTratta_id(long tratta_id) {
-        this.tratta_id = tratta_id;
-    }
+
+
 
     public int getBiglietti_vidimati() {
         return biglietti_vidimati;
@@ -90,7 +85,6 @@ public class Mezzo {
         return "Mezzo{" +
                 "id=" + id +
                 ", tipo=" + tipo +
-                ", tratta_id=" + tratta_id +
                 ", biglietti_vidimati=" + biglietti_vidimati +
                 ", data_vidimazione=" + data_vidimazione +
                 '}';

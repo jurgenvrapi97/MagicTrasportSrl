@@ -3,6 +3,8 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tickets")
 public class Ticket {
@@ -16,7 +18,8 @@ public class Ticket {
     @Column(name = "ticket_id")
     private int ticketId;
 
-
+    @Column(name = "data_emissione")
+    private LocalDate dataEmisione;
     @Column(name = "validita")
     private String validita;
 
@@ -24,9 +27,6 @@ public class Ticket {
     @JoinColumn(name = "distributore_id")
     private Distributore distributore;
 
-    @ManyToOne
-    @JoinColumn(name = "tratta_id")
-    private Tratta tratta;
 
     @ManyToOne
     @JoinColumn(name = "mezzo_id")
@@ -66,13 +66,6 @@ public class Ticket {
         this.distributore = distributore;
     }
 
-    public Tratta getTratta() {
-        return tratta;
-    }
-
-    public void setTratta(Tratta tratta) {
-        this.tratta = tratta;
-    }
 
     public Mezzo getMezzo() {
         return mezzo;

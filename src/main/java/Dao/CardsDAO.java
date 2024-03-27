@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import entities.Card;
 import entities.User;
@@ -9,6 +9,11 @@ public class CardsDAO {
     EntityManager em;
     public CardsDAO(EntityManager em) {
         this.em = em;
+    }
+
+    public Card getById(long card_id){
+        Card card=em.find(Card.class,card_id);
+        return card;
     }
 
     //methods

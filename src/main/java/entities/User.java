@@ -42,6 +42,10 @@ public class User {
         return age;
     }
 
+    public Card getCard() {
+        return card;
+    }
+
     //setters
 
     public void setName(String name) {
@@ -56,6 +60,10 @@ public class User {
         this.age = age;
     }
 
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
     //methods
 
 
@@ -68,4 +76,6 @@ public class User {
                 ", age=" + age +
                 '}';
     }
+
+
 }

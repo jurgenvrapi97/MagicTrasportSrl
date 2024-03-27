@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -14,8 +14,16 @@ public class TrattaDAO {
         tx.commit();
         System.out.println("Tratta salvata con successo");
     }
-    public Tratta findById(int id) {
-        Tratta tratta = em.find(Tratta.class, id);
-        return tratta;
+    public Tratta getById(long tratta_id){
+        Tratta tratta=em.find(Tratta.class,tratta_id);
+      return tratta;
+    }
+    public void delete(long tratta_id){
+        Tratta trattaToDelete=this.getById(tratta_id);
+        EntityTransaction transaction=em.getTransaction();
+        transaction.begin();
+        em.remove(trattaToDelete);
+        transaction.commit();
+        System.out.println("tratta"+ trattaToDelete.toString()+" eliminata");
     }
 }
