@@ -1,6 +1,7 @@
 package org.example;
 
 import Dao.AbbonamentoDao;
+import Dao.DistributoreDao;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
@@ -30,6 +31,8 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
 
         AbbonamentoDao abbonamentoDAO=new AbbonamentoDao(em);
         abbonamentoDAO.findNotExpiredByCardN(1);
+        DistributoreDao distributoreDao=new DistributoreDao(em);
+        distributoreDao.findAbbonamentiEmessiByLocation()
 
 
 

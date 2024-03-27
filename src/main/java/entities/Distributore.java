@@ -12,6 +12,9 @@ import java.util.List;
 @NamedQuery(
         name = "findBigliettiEmessiByLocation",
         query = "SELECT d.nBigliettiEmessi FROM Distributore d WHERE d.location = :location"
+)@NamedQuery(
+        name = "findAbbonamentiEmessiByLocation",
+        query = "SELECT d.nAbbonamentiEmessi FROM Distributore d WHERE d.location = :location"
 )
 public class Distributore {
     @Id
@@ -24,6 +27,8 @@ public class Distributore {
     private String location;
     @Column(name = "n_biglietti_emessi")
     private int nBigliettiEmessi;
+    @Column(name = "n_abbonamenti_emessi")
+    private int nAbbonamentiEmessi;
 
 
     @OneToMany(mappedBy = "distributore")
@@ -86,16 +91,14 @@ public class Distributore {
         this.abbonamenti = abbonamenti;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Distributore{" +
-//                "id=" + id +
-//                ", stato=" + stato +
-//                ", location='" + location + '\'' +
-//                ", nBigliettiEmessi=" + nBigliettiEmessi +
-//                ", abbonamenti=" + abbonamenti +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Distributore{" +
+                "id=" + id +
+                ", stato=" + stato +
+                ", location='" + location + '\'' +
+                '}';
+    }
 
 
 }

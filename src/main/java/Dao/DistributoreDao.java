@@ -1,5 +1,6 @@
 package Dao;
 
+import entities.Abbonamento;
 import entities.Distributore;
 import entities.Ticket;
 import entities.User;
@@ -46,5 +47,11 @@ public class DistributoreDao {
         List <Ticket>foundTickets=query.getResultList();
         System.out.println("biglietti emessi da distributore in"+location+" :"+foundTickets);
         return foundTickets;
+    }public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
+        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
+        query.setParameter("location",location);
+        List <Abbonamento>foundAbbonamenti=query.getResultList();
+        System.out.println("abbonamenti emessi da distributore in"+location+" :"+foundAbbonamenti);
+        return foundAbbonamenti;
     }
 }
