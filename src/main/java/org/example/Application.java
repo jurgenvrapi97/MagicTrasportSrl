@@ -190,6 +190,30 @@ public class Application {
 //                    System.out.println(tickets1);
 //                }
 //            }
+
+            case 4:
+             System.out.println("Immetti una data per vedere lo stato del mezzo:");
+             String input = scanner.nextLine();
+             LocalDate StatoMezzo;
+             try {
+             StatoMezzo = LocalDate.parse(input);
+             } catch (DateTimeParseException e) {
+             System.out.println("Data non valida. Accertati di inserire la data nel formato YYYY-MM-DD.");
+            break;
+            }
+
+            System.out.println("Immetti l'id del mezzo di cui vuoi vedere lo stato nella data precedentemente selezionata:");
+            mezzo_Id = Long.parseLong(scanner.nextLine());
+            Mezzo mezzoX = em.find(Mezzo.class, mezzo_Id);
+
+            if (mezzoX != null | dataStatoVeicolo != null) {
+            System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
+            md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoX);
+            } else {
+             System.out.println("Non è stato trovato alcun mezzo con id: " + mezzoId + " in data " + dataStatoVeicolo);
+            }
+             break;
+
 <<<<<<< HEAD
         } */
 
