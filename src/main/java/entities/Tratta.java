@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="tratta")
+@NamedQuery(name="getAverageTimeOfRoute",query="SELECT t.percorrenza_media FROM Tratta t WHERE t.id=:tratta_id")
 public class Tratta {
     @Id
     @GeneratedValue
@@ -29,6 +30,16 @@ public class Tratta {
         this.destinazione = destinazione;
         this.percorrenza_media = percorrenza_media;
     }
- }
+
+    @Override
+    public String toString() {
+        return "Tratta{" +
+                "id=" + id +
+                ", partenza='" + partenza + '\'' +
+                ", destinazione='" + destinazione + '\'' +
+                ", percorrenza_media=" + percorrenza_media +
+                '}'+"\n";
+    }
+}
 
 

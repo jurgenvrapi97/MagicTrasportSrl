@@ -1,9 +1,6 @@
 package org.example;
 
-import Dao.AbbonamentoDao;
-import Dao.DistributoreDao;
-import Dao.TicketDao;
-import Dao.UsersDao;
+import Dao.*;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
@@ -41,6 +38,8 @@ public class Application {
         abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
         TicketDao ticketDao=new TicketDao(em);
         ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
+        TrattaDao trattaDao=new TrattaDao(em);
+        trattaDao.getAverageTimeOfRoute(2);
 
 
         em.close();

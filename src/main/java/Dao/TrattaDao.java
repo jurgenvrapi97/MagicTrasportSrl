@@ -3,6 +3,8 @@ package Dao;
 import entities.Tratta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 
 public class TrattaDao {
     private final EntityManager em;
@@ -27,4 +29,18 @@ public class TrattaDao {
         transaction.commit();
         System.out.println("tratta"+ trattaToDelete.toString()+" eliminata");
     }
+    public Tratta getAverageTimeOfRoute(long tratta_id){
+        TypedQuery<Tratta>query= em.createNamedQuery("getAverageTimeOfRoute", Tratta.class);
+        query.setParameter("tratta_id",tratta_id);
+        try{
+            Tratta result=query.getSingleResult();
+            System.out.println("tempo di percorrenza medio per la tratta con id: "+tratta_id+" è "+result.toString());
+            return result;
+        }catch(NoResultException ex){
+            System.out.println("Dato non disponibile");
+            return null;
+        }
+
+    }
+
 }
