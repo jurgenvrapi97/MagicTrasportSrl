@@ -7,6 +7,10 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tickets")
+@NamedQuery(
+        name = "findBigliettiEmessiByTimeLapse",
+        query = "SELECT t FROM Ticket t WHERE t.dataEmisione BETWEEN :start_date AND :end_date"
+)
 public class Ticket {
 
     // Chiave Primaria composta da userId
@@ -30,6 +34,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "mezzo_id")
+
     private Mezzo mezzo;
     //----------------------------//
 

@@ -2,6 +2,7 @@ package org.example;
 
 import Dao.AbbonamentoDao;
 import Dao.DistributoreDao;
+import Dao.TicketDao;
 import Dao.UsersDao;
 import com.github.javafaker.Faker;
 import entities.*;
@@ -38,6 +39,8 @@ public class Application {
         distributoreDao.findDistributoreAttivo();
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
+        TicketDao ticketDao=new TicketDao(em);
+        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
 
 
         em.close();
