@@ -137,8 +137,9 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
     }
 
 
-    /*  Inizio ad impostare la struttura dello scanner dalla parte del gestore
+    //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
 
+    /* 
     int scelta = 0;
         long mezzo_id, tratta_id, ticket_id;
     Scanner scanner = new Scanner(System.in);
@@ -149,7 +150,7 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
         System.out.println("1) Cerca i biglietti vidimati su un mezzo specifico; ");
         System.out.println("2) Cerca i biglietti emessi in base alla data; ");
         System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
-        System.out.println("4) Cerca i peridodi di servizio e manutenzione di un mezzo in base alla data;");
+        System.out.println("4) Cerca i periodi di servizio e manutenzione di un mezzo in base alla data;");
         System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
         System.out.println("6) Verifica la validità dell'abbonamento di un'utente in base al suo numero di tessera");
         System.out.println("0) Esci dal programma; ");
@@ -167,5 +168,25 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
             return;
 
             case 1:
-        } */
+            System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
+            long Mezzo_id = Long.parseLong(scanner.nextLine());
+            md.biglietti_vidimati(md.findMezzoById(mezzo_id));
+            break;
+
+            case 2:
+            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+            LocalDate data = LocalDate.parse(scanner.nextLine());
+            List<Ticket> ticket = rd.ticketsForDate(data);
+
+            if (ticket.isEmpty()) {
+                System.out.println("Non ci sono biglietti emessi in questa data.");
+            } else {
+                System.out.println("Numero biglietti emessi in data " + data + " :");
+                for (Ticket tickets1 : ticket) {
+                    System.out.println(tickets1);
+                }
+            }
+
+        } 
+        */
 }
