@@ -191,6 +191,13 @@ public class Application {
 //                }
 //            }
 
+            case 3:
+             System.out.println("Immetti l'id del distributore:");
+             long distributore_Id = Long.parseLong(scanner.nextLine());
+             System.out.println("Questo distributore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " ticket");
+             break;
+
+
             case 4:
              System.out.println("Immetti una data per vedere lo stato del mezzo:");
              String input = scanner.nextLine();
