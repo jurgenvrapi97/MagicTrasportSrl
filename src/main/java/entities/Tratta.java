@@ -8,6 +8,8 @@ import java.util.List;
 @Entity
 @Table(name="tratta")
 @NamedQuery(name="getAverageTimeOfRoute",query="SELECT t.percorrenza_media FROM Tratta t WHERE t.id=:tratta_id")
+@NamedQuery(name="getTripCountForMezzoOnTratta", query="SELECT COUNT(m) FROM Mezzo m WHERE m.tratta.id = :tratta_id AND m.id = :mezzo_id")
+
 public class Tratta {
     @Id
     @GeneratedValue
