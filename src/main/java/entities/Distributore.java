@@ -1,12 +1,10 @@
-package Entities;
+package entities;
 
 
-import Entities.Ticket;
 import enums.Stato;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity

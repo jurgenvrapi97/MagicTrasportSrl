@@ -1,18 +1,14 @@
 package org.example;
 
-import Dao.AbbonamentoDAO;
-import Dao.CardsDAO;
-import Dao.UsersDAO;
+import Dao.AbbonamentoDao;
 import com.github.javafaker.Faker;
-import Entities.*;
+import entities.*;
 import enums.Stato;
 import enums.TipoAbbonamento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import service.TicketService;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -32,7 +28,7 @@ private static final EntityManagerFactory emf = Persistence.createEntityManagerF
        generateDistributori(20);
 
 
-        AbbonamentoDAO abbonamentoDAO=new AbbonamentoDAO(em);
+        AbbonamentoDao abbonamentoDAO=new AbbonamentoDao(em);
         abbonamentoDAO.findNotExpiredByCardN(1);
 
 

@@ -1,13 +1,13 @@
 package Dao;
 
-import Entities.Tratta;
+import entities.Tratta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class TrattaDAO {
+public class TrattaDao {
     private final EntityManager em;
 
-    public TrattaDAO(EntityManager em) {this.em=em;}
+    public TrattaDao(EntityManager em) {this.em=em;}
     public void save(Tratta tratta) {
         EntityTransaction tx = em.getTransaction();
         tx.begin();

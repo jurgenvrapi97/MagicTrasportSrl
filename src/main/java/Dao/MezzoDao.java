@@ -1,15 +1,15 @@
 package Dao;
 
-import Entities.Mezzo;
+import entities.Mezzo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
-public class MezzoDAO {
+public class MezzoDao {
 
     private final EntityManager em ;
 
-    public MezzoDAO(EntityManager em) {this.em=em ;};
+    public MezzoDao(EntityManager em) {this.em=em ;};
 
     public void save(Mezzo mezzo){
         EntityTransaction transaction = em.getTransaction();

@@ -1,8 +1,8 @@
 package Dao;
 
 
-import Entities.Mezzo;
-import Entities.Ticket;
+import entities.Mezzo;
+import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
@@ -10,11 +10,11 @@ import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.List;
 
-public class TicketDAO {
+public class TicketDao {
 
     private final EntityManager entityManager;
 
-    public TicketDAO(EntityManager entityManager) {
+    public TicketDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

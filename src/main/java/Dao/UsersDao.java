@@ -1,13 +1,13 @@
 package Dao;
 
-import Entities.User;
+import entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class UsersDAO {
+public class UsersDao {
     EntityManager em;
 
-    public UsersDAO(EntityManager em) {
+    public UsersDao(EntityManager em) {
         this.em = em;
     }
 

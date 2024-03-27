@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;

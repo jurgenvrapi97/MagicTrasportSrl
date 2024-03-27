@@ -1,7 +1,6 @@
-package Entities;
+package entities;
 
 
-import Entities.Ticket;
 import enums.TipoMezzo;
 import jakarta.persistence.*;
 

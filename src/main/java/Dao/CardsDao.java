@@ -1,13 +1,12 @@
 package Dao;
 
-import Entities.Card;
-import Entities.User;
+import entities.Card;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class CardsDAO {
+public class CardsDao {
     EntityManager em;
-    public CardsDAO(EntityManager em) {
+    public CardsDao(EntityManager em) {
         this.em = em;
     }
 

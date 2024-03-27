@@ -1,7 +1,5 @@
-package Entities;
+package entities;
 
-import Entities.Abbonamento;
-import Entities.User;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -16,10 +14,10 @@ public class Card {
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
     @OneToOne
-    private Entities.User user;
+    private entities.User user;
     @OneToOne
     @JoinColumn(name = "abbonamento_id")
-    private Entities.Abbonamento abbonamento;
+    private entities.Abbonamento abbonamento;
 
     //constructors
 
@@ -47,11 +45,11 @@ public class Card {
     //setters
 
 
-    public void setAbbonamento(Entities.Abbonamento abbonamento) {
+    public void setAbbonamento(entities.Abbonamento abbonamento) {
         this.abbonamento = abbonamento;
     }
 
-    public void setUser(Entities.User user) {
+    public void setUser(entities.User user) {
         this.user = user;
     }
 

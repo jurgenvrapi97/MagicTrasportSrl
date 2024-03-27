@@ -1,12 +1,9 @@
-package Entities;
+package entities;
 
-import Entities.Distributore;
 import enums.TipoAbbonamento;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "Abbonamento")
