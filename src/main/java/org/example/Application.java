@@ -1,9 +1,6 @@
 package org.example;
 
-import Dao.AbbonamentoDao;
-import Dao.CardsDao;
-import Dao.DistributoreDao;
-import Dao.TicketDao;
+import Dao.*;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
@@ -14,8 +11,11 @@ import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.util.Scanner;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
@@ -35,7 +35,12 @@ public class Application {
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
-        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024, 02, 28), LocalDate.now());
+        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
+        TicketDao ticketDao=new TicketDao(em);
+        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
+        TrattaDao trattaDao=new TrattaDao(em);
+        trattaDao.getAverageTimeOfRoute(2);
+        trattaDao.getTripCountForMezzoOnTratta(1,2);
 
 
         em.close();
@@ -133,147 +138,12 @@ public class Application {
     }
 
 
-    private static LocalDate convertToLocalDate(Date date) {
+    private static LocalDate convertToLocalDate(java.util.Date date) {
         return date.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-
-
-    
-    //SCANNER: LATO UTENTE (da completare)
-
-   /* Scanner scanner = new Scanner(System.in);
-    int scelta;
-    do  {
-
-        EntityManager em = emf.createEntityManager();
-
-        System.out.println("----------- BENVENUTO NELLA SEZIONE UTENTE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
-        System.out.println("1. Biglietteria");
-        System.out.println("2. Abbonamento");
-        System.out.println("3. Card per abbonamento");
-        System.out.println("0. Esci");
-
-
-        scelta =scanner.nextInt();
-        scanner.nextLine();
-        switch (scelta) {
-
-
-            case 1:
-                System.out.println("1.Acquista biglietto");
-                System.out.println("2.Convalida biglietto");
-
-                int scelta1 = scanner.nextInt();
-                switch (scelta1) {
-                    case 1:
-                        TicketDao ticketDao = new TicketDao(em);
-                        Ticket ticket = new Ticket();
-                        ticketDao.saveTicket(ticket);
-                        System.out.println("Biglietto acquistato con successo!");
-                        break;
-
-                    case 2:
-                        System.out.println("Inserisci l'ID del biglietto per convalidarlo");
-                        int ticketId = scanner.nextInt();
-                        Ticket ticketToValidate = TicketDao.findTicketById(ticketId);
-                        if (ticketToValidate != null) {
-
-                            TicketDao.ConvalidazioneBiglietto(ticketToValidate);
-                        } else {
-                            System.out.println("Nessun biglietto con l'ID specificato.");
-                        }
-                        break;
-                }
-                break;
-
-            case 2:
-                System.out.println("Acquista un abbonamento");
-                System.out.println("Verifica data di scadenza abbonamento");
-
-                int scelta2 = scanner.nextInt();
-                switch (scelta2) {
-                    case 1:
-                        System.out.println("Sei provvisto di una card? (S/N)");
-                        String risposta = scanner.next();
-                        if (risposta.equalsIgnoreCase("S")) {
-                            System.out.println("Inserisci il numero della tua card");
-                            long cardId = scanner.nextLong();
-
-
-                            Card card = CardsDao.findIsExpired(cardId);
-                            if (card != null) {
-
-                                System.out.println("Seleziona il tipo di abbonamento:");
-                                System.out.println("1. Mensile");
-                                System.out.println("2. Settimanale");
-                                int tipoScelto = scanner.nextInt();
-
-
-                                LocalDate dataInizio = LocalDate.now();
-                                LocalDate dataScadenza;
-                                TipoAbbonamento tipoAbbonamento;
-                                switch (tipoScelto) {
-                                    case 1:
-                                        dataScadenza = dataInizio.plusWeeks(1);
-                                        tipoAbbonamento = TipoAbbonamento.SETTIMANALE;
-                                        break;
-                                    case 2:
-                                        dataScadenza = dataInizio.plusMonths(1);
-                                        tipoAbbonamento = TipoAbbonamento.MENSILE;
-                                        break;
-
-                                    default:
-                                        System.out.println("Scelta non valida.");
-                                        break;
-                                }
-
-
-                                Abbonamento abbonamento = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento, null);
-                                abbonamento.setCard(card);
-                                AbbonamentoDao.saveAbbonamento(abbonamento);
-                                System.out.println("Abbonamento acquistato con successo!");
-                            } else {
-                                System.out.println("La card non esiste o è scaduta. Impossibile procedere all'acquisto dell'abbonamento.");
-                            }
-                        } else if (risposta.equalsIgnoreCase("N")) {
-                            System.out.println("Spiacenti, per acquistare un abbonamento è necessario essere provvisti di una card.");
-                        } else {
-                            System.out.println("Scelta non valida. Riprova.");
-                        }
-                        break;
-
-                    case 2:
-                        System.out.println("Inserisci il numero della tua card");
-                        int cardId = scanner.nextInt();
-
-
-                        if (isCardValid(cardId)) {
-
-                            System.out.println("La card esiste. Puoi procedere all'acquisto dell'abbonamento.");
-                        } else {
-
-                            System.out.println("La card non esiste. Impossibile procedere all'acquisto dell'abbonamento.");
-                        }
-                        break;
-                }
-                break;
-
-
-            case 0:
-                System.out.println("Uscita dal programma in corso...");
-                System.out.println("Grazie per aver utilizzato i nostri servizi");
-                scanner.close();
-                break;
-            default:
-                System.out.println("Scelta non valida. Riprova.");
-                break;
-        }
-    */
-
 }
-
 
 
     //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
@@ -363,6 +233,57 @@ public class Application {
 
 
     //---------------------------------------------------------------------------//
+    /*SCANNER: LATO UTENTE (da completare)
+    int scelta = 0;
+    long  tratta_id, ticket_id;
+    Scanner scanner = new Scanner(System.in);
+    do
 
+    {
+        System.out.println("----------- BENVENUTO NELLA SEZIONE UTENTE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
+        System.out.println("1. Biglietteria");
+        System.out.println("2. Abbonamento");
+        System.out.println("3. Card per abbonamento");
+        System.out.println("0. Esci");
+
+
+        int scelta = scanner.nextInt();
+        switch (scelta) {
+           // case 0:
+              //  System.out.println("Uscita dal programma in corso...");
+               // System.out.println("Grazie per aver utilizzato i nostri servizi");
+              //  scanner.close();
+
+            case 1:
+                System.out.println("1.Acquista biglietto");
+                System.out.println("2.Convalida biglietto");
+
+                int scelta1 = scanner.nextInt();
+                switch (scelta1){
+                    case 1:
+                        System.out.println("Biglietto acquistato con successo!");
+                        break;
+
+                    case 2:
+                        System.out.println("Inserisci l'ID del biglietto per convalidarlo");
+                        int ticketId = scanner.nextInt();
+                        break;
+                }
+           break;
+            case 2:
+                System.out.println("Acquista un abbonamento");
+                System.out.println("Verifica data di scadenza abbonamento");
+
+                int scelta2 = scanner.nextInt();
+                switch (scelta2) {
+                    case 1:
+                        System.out.println("Inserisci il numero della tua card");
+                        break;
+
+                        case 2:
+                    System.out.println("Inserisci il numero della tua card");
+                }
+          }
+    }*/
 //>>>>>>> master
 //}

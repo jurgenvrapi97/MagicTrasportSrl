@@ -102,7 +102,7 @@ public class Abbonamento {
                 ", dataScadenza=" + dataScadenza +
                 ", tipoAbbonamento=" + tipoAbbonamento +
                 ", distributore=" + distributore +
-                '}';
+                '}'+"\n";
     }
     public boolean isExpired() {
         LocalDate today = LocalDate.now();

@@ -5,6 +5,7 @@ import entities.Mezzo;
 import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
@@ -25,6 +26,20 @@ public class TicketDao {
             entityManager.persist(ticket);
             transaction.commit();
             System.out.println("Ticket salvato correttamente!");
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+    public void deleteTicket(Ticket ticket) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            entityManager.remove(ticket);
+            transaction.commit();
+            System.out.println("Ticket eliminato correttamente!");
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -69,22 +84,18 @@ public class TicketDao {
         TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
         return query.getResultList();
     }
-
-
-
-    public void deleteTicket(Ticket ticket) {
-        EntityTransaction transaction = entityManager.getTransaction();
-        try {
-            transaction.begin();
-            entityManager.remove(ticket);
-            transaction.commit();
-            System.out.println("Ticket eliminato correttamente!");
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
+    public List<Ticket>findBigliettiEmessiByTimeLapse(LocalDate startDate,LocalDate endDate){
+        TypedQuery<Ticket>query=entityManager.createNamedQuery("findBigliettiEmessiByTimeLapse", Ticket.class);
+        query.setParameter("start_date",startDate);
+        query.setParameter("end_date",endDate);
+        try{ List<Ticket>findings=query.getResultList();
+            System.out.println("biglietti emessi nel periodo dal "+startDate+" al "+endDate+": "+findings.toString());
+            return findings;
             }
-            e.printStackTrace();
+        catch (NoResultException ex){
+            System.out.println("Nessun ticket trovato per questo lasso di tempo");
+            return null;
         }
-    }
 
+    }
 }
