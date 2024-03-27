@@ -16,6 +16,10 @@ import java.time.LocalDate;
         name = "findAbbonamentiEmessiByLocation",
         query = "SELECT a FROM Abbonamento a WHERE a.distributore.location = :location"
 )
+@NamedQuery(
+        name = "findAbbonamentiEmessiByTimeLapse",
+        query = "SELECT a FROM Abbonamento a WHERE a.dataInizio BETWEEN :start_date AND :end_date"
+)
 public class Abbonamento {
 
     @Id

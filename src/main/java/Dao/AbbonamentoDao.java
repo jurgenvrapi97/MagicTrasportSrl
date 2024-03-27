@@ -2,6 +2,7 @@ package Dao;
 import entities.Abbonamento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
@@ -36,5 +37,18 @@ public class AbbonamentoDao {
         List <Abbonamento>foundAbbonamenti=query.getResultList();
         System.out.println("abbonamenti emessi da distributore in "+location+" :"+foundAbbonamenti);
         return foundAbbonamenti;
+    }
+    public List<Abbonamento>findAbbonamentiEmessiByTimeLapse(LocalDate startDate,LocalDate endDate){
+        TypedQuery<Abbonamento>query=em.createNamedQuery("findAbbonamentiEmessiByTimeLapse", Abbonamento.class);
+        query.setParameter("start_date",startDate);
+        query.setParameter("end_date",endDate);
+        try{List<Abbonamento>result=query.getResultList();
+            System.out.println("abbonamenti subscribed nel periodo dal: "+startDate+" al "+endDate+": "+result.toString());
+            return result;}
+        catch(NoResultException ex){
+            System.out.println("Nessun abbonamento trovato per questo lasso di tempo");
+            return null;
+        }
+
     }
 }

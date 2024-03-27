@@ -36,6 +36,7 @@ public class Application {
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
+        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
 
 
         em.close();
