@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="riempimento del db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/CardsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/CardsDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Card.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +32,7 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "elisa-branch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/Desktop/MagicTrasportSrl"
   }
