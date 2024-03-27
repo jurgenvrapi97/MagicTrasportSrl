@@ -12,6 +12,10 @@ import java.time.LocalDate;
         query = "SELECT a FROM Abbonamento a " +
                 "WHERE a.card.id = :cardNumber " +
                 "AND a.dataScadenza >= :today")
+@NamedQuery(
+        name = "findAbbonamentiEmessiByLocation",
+        query = "SELECT a FROM Abbonamento a WHERE a.distributore.location = :location"
+)
 public class Abbonamento {
 
     @Id

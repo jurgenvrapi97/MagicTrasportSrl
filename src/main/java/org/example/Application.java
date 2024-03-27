@@ -35,6 +35,7 @@ public class Application {
         DistributoreDao distributoreDao = new DistributoreDao(em);
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
+        abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
 
 
         em.close();
@@ -137,6 +138,7 @@ public class Application {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
+}
 
 
     //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
@@ -230,27 +232,27 @@ public class Application {
           }
     }*/
 
-=======
-            System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
-            long Mezzo_id = Long.parseLong(scanner.nextLine());
-            md.biglietti_vidimati(md.findMezzoById(mezzo_id));
-            break;
-
-            case 2:
-            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
-            LocalDate data = LocalDate.parse(scanner.nextLine());
-            List<Ticket> ticket = rd.ticketsForDate(data);
-
-            if (ticket.isEmpty()) {
-                System.out.println("Non ci sono biglietti emessi in questa data.");
-            } else {
-                System.out.println("Numero biglietti emessi in data " + data + " :");
-                for (Ticket tickets1 : ticket) {
-                    System.out.println(tickets1);
-                }
-            }
-
-        } 
-        */
->>>>>>> master
-}
+//=======
+//            System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
+//            long Mezzo_id = Long.parseLong(scanner.nextLine());
+//            md.biglietti_vidimati(md.findMezzoById(mezzo_id));
+//            break;
+//
+//            case 2:
+//            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
+//            LocalDate data = LocalDate.parse(scanner.nextLine());
+//            List<Ticket> ticket = rd.ticketsForDate(data);
+//
+//            if (ticket.isEmpty()) {
+//                System.out.println("Non ci sono biglietti emessi in questa data.");
+//            } else {
+//                System.out.println("Numero biglietti emessi in data " + data + " :");
+//                for (Ticket tickets1 : ticket) {
+//                    System.out.println(tickets1);
+//                }
+//            }
+//
+//        }
+//        */
+//>>>>>>> master
+//}

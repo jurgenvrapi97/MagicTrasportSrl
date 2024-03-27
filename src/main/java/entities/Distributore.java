@@ -13,10 +13,7 @@ import java.util.List;
         name = "findBigliettiEmessiByLocation",
         query = "SELECT d.nBigliettiEmessi FROM Distributore d WHERE d.location = :location"
 )
-//@NamedQuery(
-//        name = "findAbbonamentiEmessiByLocation",
-//        query = "SELECT d.nAbbonamentiEmessi FROM Distributore d WHERE d.location = :location"
-//)
+
 @NamedQuery(
         name = "findDistributoreAttivo",
         query = "SELECT d FROM Distributore d WHERE d.stato = 'ATTIVO'"
@@ -32,12 +29,12 @@ public class Distributore {
     private String location;
     @Column(name = "n_biglietti_emessi")
     private int nBigliettiEmessi;
-//    @Column(name = "n_abbonamenti_emessi")
-//    private int nAbbonamentiEmessi;
+
 
 
     @OneToMany(mappedBy = "distributore")
     private List<Abbonamento> abbonamenti = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "distributore")
     private List<Ticket> tickets;
@@ -104,6 +101,4 @@ public class Distributore {
                 ", location='" + location + '\'' +
                 '}';
     }
-
-
 }

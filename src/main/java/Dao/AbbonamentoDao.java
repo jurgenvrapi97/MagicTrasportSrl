@@ -5,6 +5,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class AbbonamentoDao {
     private final EntityManager em;
@@ -28,5 +29,12 @@ public class AbbonamentoDao {
         System.out.println("trovato abbonamento non scaduto:"+foundAbb);
         return foundAbb;
 
+    }
+    public List<Abbonamento> findAbbonamentiEmessiByLocation(String location){
+        TypedQuery<Abbonamento> query=em.createNamedQuery("findAbbonamentiEmessiByLocation", Abbonamento.class);
+        query.setParameter("location",location);
+        List <Abbonamento>foundAbbonamenti=query.getResultList();
+        System.out.println("abbonamenti emessi da distributore in "+location+" :"+foundAbbonamenti);
+        return foundAbbonamenti;
     }
 }
