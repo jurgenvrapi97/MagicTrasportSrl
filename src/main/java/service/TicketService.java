@@ -2,7 +2,7 @@ package service;
 
 
 import Dao.TicketDAO;
-import entities.Ticket;
+import Entities.Ticket;
 import jakarta.persistence.EntityManager;
 
 public class TicketService {

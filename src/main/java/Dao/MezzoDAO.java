@@ -1,6 +1,6 @@
 package Dao;
 
-import entities.Mezzo;
+import Entities.Mezzo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -23,5 +23,15 @@ public class MezzoDAO {
     public Mezzo findMezzoById(long id){
         Mezzo mezzo = em.find(Mezzo.class, id);
         return mezzo;
+    }
+    public void deleteById(long id) {
+        Mezzo mezzo =findMezzoById(id);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.remove(mezzo);
+        transaction.commit();
+        System.out.println("Mezzo cancellato con successo");
+
+
     }
 }

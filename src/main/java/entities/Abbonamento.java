@@ -1,5 +1,6 @@
-package entities;
+package Entities;
 
+import Entities.Distributore;
 import enums.TipoAbbonamento;
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
 package Dao;
 
-import entities.Card;
-import entities.User;
+import Entities.Card;
+import Entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 

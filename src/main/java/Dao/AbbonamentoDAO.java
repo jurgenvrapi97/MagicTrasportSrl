@@ -1,5 +1,5 @@
 package Dao;
-import entities.Abbonamento;
+import Entities.Abbonamento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;

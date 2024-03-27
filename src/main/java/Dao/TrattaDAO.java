@@ -1,8 +1,9 @@
 package Dao;
 
+import Entities.Tratta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import entities.Tratta;
+
 public class TrattaDAO {
     private final EntityManager em;
 

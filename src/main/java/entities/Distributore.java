@@ -1,5 +1,7 @@
-package entities;
+package Entities;
 
+
+import Entities.Ticket;
 import enums.Stato;
 import jakarta.persistence.*;
 

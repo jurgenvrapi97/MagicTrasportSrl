@@ -1,6 +1,6 @@
 package Dao;
 
-import entities.User;
+import Entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
