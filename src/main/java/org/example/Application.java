@@ -194,7 +194,7 @@ public class Application {
             case 3:
              System.out.println("Immetti l'id del distributore:");
              long distributore_Id = Long.parseLong(scanner.nextLine());
-             System.out.println("Questo distributore ha venduto " + rd.serviziForRivenditore(rivenditoreId).size() + " ticket");
+             System.out.println("Questo distributore ha venduto " + rd.nBigliettiEmessi(distributore_id).size() + " ticket");
              break;
 
 
