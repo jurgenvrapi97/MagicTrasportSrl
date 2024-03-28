@@ -35,12 +35,12 @@ public class Application {
         distributoreDao.findBigliettiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         distributoreDao.findDistributoreAttivo();
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
-        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024, 02, 28), LocalDate.now());
-        TicketDao ticketDao = new TicketDao(em);
-        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024, 03, 11), LocalDate.now());
-        TrattaDao trattaDao = new TrattaDao(em);
-        trattaDao.getAverageTimeOfRoute(2);
-        trattaDao.getTripCountForMezzoOnTratta(1, 2);
+        abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
+        TicketDao ticketDao=new TicketDao(em);
+        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
+        TrattaDao trattaDao=new TrattaDao(em);
+        trattaDao.getAverageTimeOfRoute(23);
+        trattaDao.getTripCountForMezzoOnTratta(152,1);
 
 
         em.close();
@@ -143,7 +143,6 @@ public class Application {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-
 }
 
 
@@ -234,13 +233,9 @@ public class Application {
 
 //SCANNER: LATO UTENTE (da completare)
 
-   /*
-
-    Scanner scanner = new Scanner(System.in);
+   /* Scanner scanner = new Scanner(System.in);
     int scelta;
-    do
-
-    {
+    do  {
 
         EntityManager em = emf.createEntityManager();
 
@@ -251,7 +246,7 @@ public class Application {
         System.out.println("0. Esci");
 
 
-        scelta = scanner.nextInt();
+        scelta =scanner.nextInt();
         scanner.nextLine();
         switch (scelta) {
 
@@ -356,30 +351,6 @@ public class Application {
                 break;
 
 
-  ---------Aggiunta logica creazione e salvataggio card (da testare)-------
-
-            case 3:
-                System.out.println("Creazione di una nuova carta:");
-                System.out.println("Inserisci il tuo nome:");
-                String nome = scanner.nextLine();
-                System.out.println("Inserisci il tuo cognome:");
-                String cognome = scanner.nextLine();
-
-
-
-
-                Card nuovaCarta = new Card(LocalDate.now());
-                nuovaCarta.setNome(nome);
-                nuovaCarta.setCognome(cognome);
-
-
-                CardsDao cardsDao = new CardsDao(em);
-                cardsDao.save(nuovaCarta);
-
-                System.out.println("Nuova carta creata con successo!");
-                break;
-
-
             case 0:
                 System.out.println("Uscita dal programma in corso...");
                 System.out.println("Grazie per aver utilizzato i nostri servizi");
@@ -389,7 +360,6 @@ public class Application {
                 System.out.println("Scelta non valida. Riprova.");
                 break;
         }
-    }
     */
 
 //>>>>>>> master
