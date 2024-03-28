@@ -43,6 +43,7 @@ public class Application {
         trattaDao.getTripCountForMezzoOnTratta(152,1);
 
 
+
         em.close();
         emf.close();
 

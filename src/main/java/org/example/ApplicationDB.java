@@ -28,6 +28,9 @@ public class ApplicationDB {
         // ho aggiunto i metodi e il dao per timbrare uno specifico biglietto con il suo id per far si che lo vidimi
         TicketDao ticketDAO = new TicketDao(em);
         ticketDAO.vidimareTicket(1);
+        ticketDAO.vidimareTicket(4);
+        MezzoDao mezzoDao=new MezzoDao(em);
+        mezzoDao.getBigliettiConvalidatiPerMezzo(8);
         OperativitaDao operativitaDAO = new OperativitaDao(em);
         System.out.println("giorni di manutenzione: "+operativitaDAO.getGiorniDiManutenzione(8));
         System.out.println("giorni di servizio: " + operativitaDAO.getGiorniDiServizio(8));
