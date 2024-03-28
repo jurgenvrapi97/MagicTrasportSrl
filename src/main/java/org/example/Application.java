@@ -1,41 +1,67 @@
 package org.example;
 
 import Dao.*;
-import com.github.javafaker.Faker;
+
 import entities.*;
-import enums.Stato;
+
 import enums.TipoAbbonamento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MagicTrasportSrl");
 
 
-    public static void main(String[] args) {
+
+        public static void main(String[] args) {
+            Scanner scanner =new Scanner(System.in);
+            boolean exitProgram = false;
+            do {
+                System.out.println("Seleziona il lato dell'applicazione:");
+                System.out.println("1. Utente");
+                System.out.println("2. Admin");
+                System.out.println("0. Esci");
+
+                int lato = Integer.parseInt(scanner.nextLine());
+
+
+                switch (lato) {
+                    case 1:
+                        runUserSide(scanner);
+                        break;
+                    case 2:
+                        runAdminSide(scanner);
+                        break;
+                    case 0:
+                        System.out.println("Uscita dal programma in corso...");
+                        System.out.println("Grazie per aver utilizzato i nostri servizi");
+
+                        exitProgram = true;
+                        break;
+                    default:
+                        System.out.println("Scelta non valida. Riprova.");
+                        break;
+                }
+            } while (!exitProgram);
+
+            scanner.close();
+        }
+
+        private static void runUserSide(Scanner scanner) {
         EntityManager em = emf.createEntityManager();
-        Scanner scanner = new Scanner(System.in);
         int scelta;
         do
-
         {
-
-//            EntityManager em = emf.createEntityManager();
 
             System.out.println("----------- BENVENUTO NELLA SEZIONE UTENTE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
             System.out.println("1. Biglietteria");
             System.out.println("2. Abbonamento");
             System.out.println("3. Card per abbonamento");
-            System.out.println("0. Esci");
+            System.out.println("4. Torna al menu principale");
+
 
 
             scelta = scanner.nextInt();
@@ -172,50 +198,25 @@ public class Application {
                     cardsDao.updateUser(user,nuovaCarta.getId());
                     System.out.println("Nuova carta creata con successo!");
                     break;
-
-
-                case 0:
-                    System.out.println("Uscita dal programma in corso...");
-                    System.out.println("Grazie per aver utilizzato i nostri servizi");
-                    scanner.close();
-                    break;
+                case 4:
+                    System.out.println("Tornando al menu principale");
+                    return;
                 default:
                     System.out.println("Scelta non valida. Riprova.");
                     break;
             }
-        }while(scelta!=0);
+        }while(scelta!=4);
 
         em.close();
         emf.close();
+
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//SCANNER: LATO UTENTE (da completare)
-
-
-
-
-//>>>>>>> master
-//}
-//__________________________LATO ADMIN_______________________________________________________
+    private static void runAdminSide(Scanner scanner) {
+        //__________________________LATO ADMIN_______________________________________________________
 //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
 // riga di prova
     /*
-    int scelta = 0;
+    int scelta;
         long mezzo_id, tratta_id, ticket_id;
     Scanner scanner = new Scanner(System.in);
     do {
@@ -227,7 +228,7 @@ public class Application {
         System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
         System.out.println("4) Cerca i periodi di servizio e manutenzione di un mezzo in base alla data;");
         System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
-        System.out.println("0) Esci dal programma; ");
+        System.out.println("6) Torna al menu principale ");
 
 
         scelta = scanner.nextInt();
@@ -291,5 +292,35 @@ public class Application {
             }
              break;
 
-<<<<<<< HEAD
-        } */
+            case 6:
+                    System.out.println("Tornando al menu principale");
+                    return;
+                default:
+                    System.out.println("Scelta non valida. Riprova.");
+                    break;
+
+        } while(scelta!=6)*/
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
