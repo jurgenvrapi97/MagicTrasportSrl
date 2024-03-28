@@ -2,6 +2,7 @@ package entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.time.temporal.Temporal;
 
 @Entity
 @Table(name="operatività")
@@ -43,7 +44,7 @@ public class Operatività {
         this.id = id;
     }
 
-    public Date getDataInizioManutenzione() {
+    public Temporal getDataInizioManutenzione() {
         return dataInizioManutenzione;
     }
 
@@ -59,7 +60,7 @@ public class Operatività {
         this.dataFineManutenzione = dataFineManutenzione;
     }
 
-    public Date getDataInizioServizio() {
+    public Temporal getDataInizioServizio() {
         return dataInizioServizio;
     }
 

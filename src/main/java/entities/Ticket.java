@@ -51,6 +51,10 @@ public class Ticket {
         return ticketId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
