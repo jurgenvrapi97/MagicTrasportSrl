@@ -2,6 +2,8 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 
 @Entity
@@ -17,6 +19,9 @@ public class User {
     private int age;
     @OneToOne(mappedBy = "user")
     private Card card;
+
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> tickets = new ArrayList<>();
     //constructors
 
     public User() {
@@ -48,7 +53,9 @@ public class User {
     public Card getCard() {
         return card;
     }
-
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 
 
     //setters
