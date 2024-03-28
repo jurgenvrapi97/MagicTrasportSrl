@@ -1,5 +1,6 @@
 package entities;
 
+
 import enums.TipoMezzo;
 import jakarta.persistence.*;
 
@@ -22,6 +23,7 @@ public class Mezzo {
     @OneToMany(mappedBy = "mezzo")
     private List<Ticket> tickets;
     @ManyToOne
+    @JoinColumn(name="tratta_id")
     private Tratta tratta;
     @OneToMany(mappedBy = "mezzo")
     private List<Operatività>operatività;

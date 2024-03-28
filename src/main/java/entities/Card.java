@@ -1,11 +1,12 @@
 package entities;
 
-
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="Card")
+@NamedQuery(name="findIsExpired",query="SELECT c FROM Card c WHERE c.id=:id AND c.data_di_scadenza >=:today"
+)
 public class Card {
     //attributes
     @Id
@@ -15,10 +16,10 @@ public class Card {
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
     @OneToOne
-    private User user;
+    private entities.User user;
     @OneToOne
     @JoinColumn(name = "abbonamento_id")
-    private Abbonamento abbonamento;
+    private entities.Abbonamento abbonamento;
 
     //constructors
 
@@ -46,11 +47,11 @@ public class Card {
     //setters
 
 
-    public void setAbbonamento(Abbonamento abbonamento) {
+    public void setAbbonamento(entities.Abbonamento abbonamento) {
         this.abbonamento = abbonamento;
     }
 
-    public void setUser(User user) {
+    public void setUser(entities.User user) {
         this.user = user;
     }
 
@@ -71,5 +72,9 @@ public class Card {
                 ", data_di_scadenza=" + data_di_scadenza +
                 ", data_di_sottoscrizione=" + data_di_sottoscrizione +
                 '}';
+    }
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        return data_di_scadenza.isBefore(today);
     }
 }
