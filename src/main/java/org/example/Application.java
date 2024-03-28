@@ -39,8 +39,8 @@ public class Application {
         TicketDao ticketDao=new TicketDao(em);
         ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
         TrattaDao trattaDao=new TrattaDao(em);
-        trattaDao.getAverageTimeOfRoute(2);
-        trattaDao.getTripCountForMezzoOnTratta(1,2);
+        trattaDao.getAverageTimeOfRoute(23);
+        trattaDao.getTripCountForMezzoOnTratta(152,1);
 
 
         em.close();
