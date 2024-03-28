@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="creazione del db e vidimazione dei biglietti">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDAO.java" afterDir="false" />
+    <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="aggiunta Operatività e ricerca">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Operatività.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Operatività.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Tratta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Tratta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711539435741</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="aggiunta Operatività e ricerca">
+      <option name="closed" value="true" />
+      <created>1711558678103</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711558678103</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -103,6 +109,7 @@
     <MESSAGE value="riempimento del db" />
     <MESSAGE value="fix data scadenza abonamenti" />
     <MESSAGE value="creazione del db e vidimazione dei biglietti" />
-    <option name="LAST_COMMIT_MESSAGE" value="creazione del db e vidimazione dei biglietti" />
+    <MESSAGE value="aggiunta Operatività e ricerca" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta Operatività e ricerca" />
   </component>
 </project>

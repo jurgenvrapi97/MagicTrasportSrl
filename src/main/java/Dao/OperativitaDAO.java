@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class OperativitaDAO {
@@ -61,7 +62,7 @@ public class OperativitaDAO {
 
 
         for (Operatività servizio : servizi) {
-            System.out.println("ID: " + servizio.getId());
+
             System.out.println("Data Inizio Servizio: " + servizio.getDataInizioServizio());
             System.out.println("Data Fine Servizio: " + servizio.getDataFineServizio());
             System.out.println("-------------------------");
@@ -78,7 +79,7 @@ public class OperativitaDAO {
         em.close();
 
         for (Operatività manutenzione : manutenzioni) {
-            System.out.println("ID: " + manutenzione.getId());
+
             System.out.println("Data Inizio Manutenzione: " + manutenzione.getDataInizioManutenzione());
             System.out.println("Data Fine Manutenzione: " + manutenzione.getDataFineManutenzione());
             System.out.println("-------------------------");
@@ -87,6 +88,22 @@ public class OperativitaDAO {
         return manutenzioni;
     }
 
+    public long getGiorniDiServizio(long idMezzo) {
+        List<Operatività> servizi = getServiziMezzo(idMezzo);
+        long giorniDiServizio = 0;
+        for (Operatività servizio : servizi) {
+            giorniDiServizio += ChronoUnit.DAYS.between(servizio.getDataInizioServizio(), servizio.getDataFineServizio());
+        }
+        return giorniDiServizio;
+    }
 
+    public long getGiorniDiManutenzione(long idMezzo) {
+        List<Operatività> manutenzioni = getManutenzioniMezzo(idMezzo);
+        long giorniDiManutenzione = 0;
+        for (Operatività manutenzione : manutenzioni) {
+            giorniDiManutenzione += ChronoUnit.DAYS.between(manutenzione.getDataInizioManutenzione(), manutenzione.getDataFineManutenzione());
+        }
+        return giorniDiManutenzione;
+    }
 
 }
