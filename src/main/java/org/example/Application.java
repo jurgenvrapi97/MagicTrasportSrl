@@ -51,7 +51,9 @@ public class Application {
                     switch (scelta1) {
                         case 1:
                             TicketDao ticketDao = new TicketDao(em);
-                            Ticket ticket = new Ticket();
+                            DistributoreDao distributoreDao=new DistributoreDao(em);
+                            MezzoDao mezzoDao=new MezzoDao(em);
+                            Ticket ticket = new Ticket(LocalDate.now(),"valido",null,distributoreDao.getById(104),mezzoDao.findMezzoById(25),null);
                             ticketDao.saveTicket(ticket);
                             System.out.println("Biglietto acquistato con successo!");
                             break;
