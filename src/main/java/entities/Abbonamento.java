@@ -4,6 +4,8 @@ import enums.TipoAbbonamento;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Abbonamento")
@@ -12,14 +14,6 @@ import java.time.LocalDate;
         query = "SELECT a FROM Abbonamento a " +
                 "WHERE a.card.id = :cardNumber " +
                 "AND a.dataScadenza >= :today")
-@NamedQuery(
-        name = "findAbbonamentiEmessiByLocation",
-        query = "SELECT a FROM Abbonamento a WHERE a.distributore.location = :location"
-)
-@NamedQuery(
-        name = "findAbbonamentiEmessiByTimeLapse",
-        query = "SELECT a FROM Abbonamento a WHERE a.dataInizio BETWEEN :start_date AND :end_date"
-)
 public class Abbonamento {
 
     @Id
@@ -102,7 +96,7 @@ public class Abbonamento {
                 ", dataScadenza=" + dataScadenza +
                 ", tipoAbbonamento=" + tipoAbbonamento +
                 ", distributore=" + distributore +
-                '}'+"\n";
+                '}';
     }
     public boolean isExpired() {
         LocalDate today = LocalDate.now();

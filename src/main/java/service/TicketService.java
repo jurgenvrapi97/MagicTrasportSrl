@@ -1,16 +1,16 @@
 package service;
 
 
-import Dao.TicketDao;
+import Dao.TicketDAO;
 import entities.Ticket;
 import jakarta.persistence.EntityManager;
 
 public class TicketService {
 
-    private final TicketDao ticketDAO;
+    private final TicketDAO ticketDAO;
 
     public TicketService(EntityManager entityManager) {
-        this.ticketDAO = new TicketDao(entityManager);
+        this.ticketDAO = new TicketDAO(entityManager);
     }
 
     public void saveTicket(Ticket ticket) {
