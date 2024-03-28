@@ -44,17 +44,17 @@ public class TrattaDao {
 
     }
     public long getAverageTimeOfRoute(long tratta_id){
-        TypedQuery<Long>query= em.createNamedQuery("getAverageTimeOfRoute", Long.class);
+        TypedQuery<Number> query = em.createNamedQuery("getAverageTimeOfRoute", Number.class);
         query.setParameter("tratta_id",tratta_id);
         try{
-            Long result=query.getSingleResult();
-            System.out.println("tempo di percorrenza medio per la tratta con id: "+tratta_id+" è "+result.toString());
-            return result;
+            Number result = query.getSingleResult();
+            System.out.println("tempo di percorrenza medio per la tratta con id: "+tratta_id+" è "+result.longValue()+" min");
+            return result.longValue();
         }catch(NoResultException ex){
             System.out.println("Dato non disponibile");
             return 0;
         }
-
     }
+
 
 }

@@ -27,6 +27,8 @@ public class Tratta {
     @OneToMany(mappedBy = "tratta")
     private List<Mezzo> mezzi;
 
+    public  Tratta(){}
+
     public Tratta( String partenza, String destinazione, int percorrenza_media) {
         this.partenza = partenza;
         this.destinazione = destinazione;
