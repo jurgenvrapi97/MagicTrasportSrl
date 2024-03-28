@@ -5,16 +5,17 @@ import entities.Mezzo;
 import entities.Ticket;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
-public class TicketDAO {
+public class TicketDao {
 
     private final EntityManager entityManager;
 
-    public TicketDAO(EntityManager entityManager) {
+    public TicketDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -32,18 +33,6 @@ public class TicketDAO {
             e.printStackTrace();
         }
     }
-
-    public Ticket findTicketById(int ticketId) {
-        return entityManager.find(Ticket.class, ticketId);
-    }
-
-    public List<Ticket> findAllTickets() {
-        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
-        return query.getResultList();
-    }
-
-
-
     public void deleteTicket(Ticket ticket) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -59,39 +48,54 @@ public class TicketDAO {
         }
     }
 
-
-    public void vidimareTicket(int ticketId) {
+    public void ConvalidazioneBiglietto(Ticket ticket) {
         EntityTransaction transaction = entityManager.getTransaction();
+
         try {
             transaction.begin();
-
-            // Cerca il biglietto nel database utilizzando l'ID
-            Ticket ticket = entityManager.find(Ticket.class, ticketId);
-            if (ticket == null) {
-                throw new IllegalArgumentException("Nessun biglietto trovato con l'ID: " + ticketId);
-            }
-
-            // Vidima il biglietto
-            ticket.vidimare();
-
-            // Incrementa il contatore del mezzo
-            Mezzo mezzo = ticket.getMezzo();
-            mezzo.incrementaBigliettiVidimati();
-
-            // Salva le modifiche
+            ticket.setValidita(null);
             entityManager.merge(ticket);
-            entityManager.merge(mezzo);
-
             transaction.commit();
-            System.out.println("Biglietto vidimato correttamente!");
+            System.out.println("Il biglietto è stato convalidato con successo!");
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
-            e.printStackTrace();
+            System.err.println("Si è verificato un errore durante la convalida del biglietto: " + e.getMessage());
         }
     }
+    public int getBigliettiConvalidatiPerMezzo(Mezzo mezzo, LocalDate data) {
+        try {
+            return entityManager.createQuery("SELECT COUNT(t) FROM Ticket t WHERE t.mezzo = :mezzo AND t.dataEmisione <= :data AND t.validita = 'Vidimato'", Long.class)
+                    .setParameter("mezzo", mezzo)
+                    .setParameter("data", data)
+                    .getSingleResult()
+                    .intValue();
+        } catch (Exception e) {
+            System.err.println("Si è verificato un errore durante il recupero del numero di biglietti vidimati per il mezzo: " + e.getMessage());
+            return 0;
+        }
+    }
+    public Ticket findTicketById(int ticketId) {
+        return entityManager.find(Ticket.class, ticketId);
+    }
 
+    public List<Ticket> findAllTickets() {
+        TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
+        return query.getResultList();
+    }
+    public List<Ticket>findBigliettiEmessiByTimeLapse(LocalDate startDate,LocalDate endDate){
+        TypedQuery<Ticket>query=entityManager.createNamedQuery("findBigliettiEmessiByTimeLapse", Ticket.class);
+        query.setParameter("start_date",startDate);
+        query.setParameter("end_date",endDate);
+        try{ List<Ticket>findings=query.getResultList();
+            System.out.println("biglietti emessi nel periodo dal "+startDate+" al "+endDate+": "+findings.toString());
+            return findings;
+            }
+        catch (NoResultException ex){
+            System.out.println("Nessun ticket trovato per questo lasso di tempo");
+            return null;
+        }
 
-
+    }
 }
