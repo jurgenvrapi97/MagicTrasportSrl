@@ -15,11 +15,14 @@ public class Card {
     private long id;
     private LocalDate data_di_scadenza;
     private LocalDate data_di_sottoscrizione;
+    private String nome;
+    private String cognome;
     @OneToOne
     private entities.User user;
     @OneToOne
     @JoinColumn(name = "abbonamento_id")
     private entities.Abbonamento abbonamento;
+
 
     //constructors
 
@@ -42,6 +45,22 @@ public class Card {
 
     public LocalDate getData_di_sottoscrizione() {
         return data_di_sottoscrizione;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     //setters
@@ -77,4 +96,6 @@ public class Card {
         LocalDate today = LocalDate.now();
         return data_di_scadenza.isBefore(today);
     }
+
+
 }
