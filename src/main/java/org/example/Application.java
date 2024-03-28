@@ -148,7 +148,7 @@ public class Application {
 
 
     //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
-
+ // riga di prova
     /* 
     int scelta = 0;
         long mezzo_id, tratta_id, ticket_id;
