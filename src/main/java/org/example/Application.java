@@ -96,18 +96,20 @@ public class Application {
                                     switch (tipoScelto) {
                                         case 1:
                                             DistributoreDao distributoreDao=new DistributoreDao(em);
-                                           Distributore nDistributore =distributoreDao.getById(5);
+                                           Distributore nDistributore =distributoreDao.getById(110);
                                             dataScadenza = dataInizio.plusWeeks(1);
                                             tipoAbbonamento = TipoAbbonamento.SETTIMANALE;
                                             Abbonamento abbonamento = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento,nDistributore );
                                             AbbonamentoDao abbonamentoDao=new AbbonamentoDao(em);
                                             abbonamento.setCard(card);
                                             abbonamentoDao.saveAbbonamento(abbonamento);
+                                            CardsDao cardsDao1=new CardsDao(em);
+                                            cardsDao1.updateAbbonamento(abbonamento,70);
                                             System.out.println("Abbonamento acquistato con successo!");
                                             break;
                                         case 2:
                                             DistributoreDao distributoreDao1=new DistributoreDao(em);
-                                            Distributore nDistributore1 =distributoreDao1.getById(7);
+                                            Distributore nDistributore1 =distributoreDao1.getById(110);
                                             dataScadenza = dataInizio.plusMonths(1);
                                             tipoAbbonamento = TipoAbbonamento.MENSILE;
                                             Abbonamento abbonamento1 = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento,nDistributore1 );
@@ -149,7 +151,24 @@ public class Application {
                                 System.out.println("La card non esiste. Impossibile procedere all'acquisto dell'abbonamento.");
                             }
                             break;
+
                     }
+                    break;
+//                ---------Aggiunta logica creazione e salvataggio card (da testare)-------
+
+                case 3:
+                    System.out.println("Creazione di una nuova carta:");
+
+
+                    Card nuovaCarta = new Card(LocalDate.now());
+                    CardsDao cardsDao = new CardsDao(em);
+                    cardsDao.save(nuovaCarta);
+                    UsersDao usersDao=new UsersDao(em);
+                    System.out.println("se sei già un utente inserisci il tuo codice utente");
+                    long user_id= Long.parseLong(scanner.nextLine());
+                    User user=usersDao.getById(user_id);
+                    cardsDao.updateUser(user,nuovaCarta.getId());
+                    System.out.println("Nuova carta creata con successo!");
                     break;
 
 
