@@ -260,8 +260,8 @@ public class ApplicationDB {
 
         for (Mezzo mezzo : mezzi) {
             Operatività manutenzione = new Operatività();
-            manutenzione.setDataInizioManutenzione(Date.valueOf(faker.date().past(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
-            manutenzione.setDataFineManutenzione(Date.valueOf(faker.date().future(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+            manutenzione.setDataInizioManutenzione(faker.date().past(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            manutenzione.setDataFineManutenzione(faker.date().future(30, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             manutenzione.setMezzo(mezzo);
 
             Operatività servizio = new Operatività();

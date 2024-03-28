@@ -21,6 +21,8 @@ public class OperativitaDao {
         this.entityManager = entityManager;
     }
 
+
+
     public Operatività getOperativita(long id) {
         EntityManager em = emf.createEntityManager();
         return em.find(Operatività.class, id);
@@ -107,3 +109,4 @@ public class OperativitaDao {
     }
 
 }
+

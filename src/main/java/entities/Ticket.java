@@ -115,7 +115,15 @@ public class Ticket {
         this.mezzo = mezzo;
     }
 
-
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketId=" + ticketId +
+                ", dataEmisione=" + dataEmisione +
+                ", validita='" + validita + '\'' +
+                ", dataVidimazione=" + dataVidimazione +
+                '}'+"\n";
+    }
 
     public void vidimare() {
         // Controlla se il biglietto è già stato vidimato

@@ -2,7 +2,7 @@ package entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.time.temporal.Temporal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="operatività")
@@ -13,24 +13,24 @@ public class Operatività {
     private long id;
 
     @Column(name = "data_inizio_manutenzione")
-    private Date dataInizioManutenzione;
+    private LocalDate dataInizioManutenzione;
 
     @Column(name = "data_fine_manutenzione")
-    private Date dataFineManutenzione;
+    private LocalDate dataFineManutenzione;
 
     @Column(name = "data_inizio_servizio")
-    private Date dataInizioServizio;
+    private LocalDate dataInizioServizio;
 
     @Column(name = "data_fine_servizio")
-    private Date dataFineServizio;
+    private LocalDate dataFineServizio;
 
     @ManyToOne
     @JoinColumn(name="mezzo_id")
     private Mezzo mezzo;
 
-    public Operatività(){}
+    public Operatività(){};
 
-    public Operatività(Date dataInizioManutenzione, Date dataFineManutenzione, Date dataInizioServizio, Date dataFineServizio, Mezzo mezzo) {
+    public Operatività(LocalDate dataInizioManutenzione, LocalDate dataFineManutenzione, LocalDate dataInizioServizio, LocalDate dataFineServizio, Mezzo mezzo) {
         this.dataInizioManutenzione = dataInizioManutenzione;
         this.dataFineManutenzione = dataFineManutenzione;
         this.dataInizioServizio = dataInizioServizio;
@@ -46,35 +46,35 @@ public class Operatività {
         this.id = id;
     }
 
-    public Temporal getDataInizioManutenzione() {
-        return (Temporal) dataInizioManutenzione;
+    public LocalDate getDataInizioManutenzione() {
+        return dataInizioManutenzione;
     }
 
-    public void setDataInizioManutenzione(Date dataInizioManutenzione) {
+    public void setDataInizioManutenzione(LocalDate dataInizioManutenzione) {
         this.dataInizioManutenzione = dataInizioManutenzione;
     }
 
-    public Date getDataFineManutenzione() {
+    public LocalDate getDataFineManutenzione() {
         return dataFineManutenzione;
     }
 
-    public void setDataFineManutenzione(Date dataFineManutenzione) {
+    public void setDataFineManutenzione(LocalDate dataFineManutenzione) {
         this.dataFineManutenzione = dataFineManutenzione;
     }
 
-    public Temporal getDataInizioServizio() {
-        return (Temporal) dataInizioServizio;
+    public LocalDate getDataInizioServizio() {
+        return dataInizioServizio;
     }
 
-    public void setDataInizioServizio(Date dataInizioServizio) {
+    public void setDataInizioServizio(LocalDate dataInizioServizio) {
         this.dataInizioServizio = dataInizioServizio;
     }
 
-    public Date getDataFineServizio() {
+    public LocalDate getDataFineServizio() {
         return dataFineServizio;
     }
 
-    public void setDataFineServizio(Date dataFineServizio) {
+    public void setDataFineServizio(LocalDate dataFineServizio) {
         this.dataFineServizio = dataFineServizio;
     }
 
