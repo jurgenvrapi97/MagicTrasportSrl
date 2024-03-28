@@ -3,6 +3,7 @@ package Dao;
 import entities.Mezzo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
 public class MezzoDao {
@@ -49,5 +50,17 @@ public class MezzoDao {
             System.out.println("Il tempo di percorrenza media del mezzo con id " + mezzo_Id + " è di " + tempoPercorrenzaMedia + " minuti.");
             return tempoPercorrenzaMedia;
         }
+    }
+    public int getBigliettiConvalidatiPerMezzo(int mezzo_id){
+        TypedQuery<Integer>q=em.createQuery("SELECT m.biglietti_vidimati FROM Mezzo m WHERE m.id=:mezzo_id", Integer.class);
+        q.setParameter("mezzo_id",mezzo_id);
+        try{Integer result=q.getSingleResult();
+            System.out.println("il numero di biglietti vidimati sul mezzo "+mezzo_id+" è: "+result);
+            return result;}
+        catch (NoResultException ex){
+            System.out.println("Dato non disponibile");
+            return 0;
+        }
+
     }
 }
