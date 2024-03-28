@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="riempimento del db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/AbbonamentoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/AbbonamentoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/CardsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/CardsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/DistributoreDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/DistributoreDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Abbonamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Distributore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TrattaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TrattaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Mezzo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Tratta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Tratta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +34,7 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging francesco-branch",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/user/Desktop/MagicTrasportSrl"
   }
@@ -82,16 +79,5 @@
     <MESSAGE value="add entity Operatività" />
     <MESSAGE value="riempimento del db" />
     <option name="LAST_COMMIT_MESSAGE" value="riempimento del db" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Application.java</url>
-          <line>276</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

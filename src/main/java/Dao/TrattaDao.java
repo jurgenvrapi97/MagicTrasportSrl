@@ -3,6 +3,8 @@ package Dao;
 import entities.Tratta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 
 public class TrattaDao {
     private final EntityManager em;
@@ -27,4 +29,32 @@ public class TrattaDao {
         transaction.commit();
         System.out.println("tratta"+ trattaToDelete.toString()+" eliminata");
     }
+    public long getTripCountForMezzoOnTratta(long tratta_id, long mezzo_id){
+        TypedQuery<Long>query= em.createNamedQuery("getTripCountForMezzoOnTratta", Long.class);
+        query.setParameter("tratta_id",tratta_id);
+        query.setParameter("mezzo_id",mezzo_id);
+        try{
+            Long result=query.getSingleResult();
+            System.out.println("La tratta con id: "+tratta_id+" è percorsa dal mezzo n."+mezzo_id+" "+result+" volte");
+            return result;
+        }catch(NoResultException ex){
+            System.out.println("Dato non disponibile");
+            return 0;
+        }
+
+    }
+    public long getAverageTimeOfRoute(long tratta_id){
+        TypedQuery<Long>query= em.createNamedQuery("getAverageTimeOfRoute", Long.class);
+        query.setParameter("tratta_id",tratta_id);
+        try{
+            Long result=query.getSingleResult();
+            System.out.println("tempo di percorrenza medio per la tratta con id: "+tratta_id+" è "+result.toString());
+            return result;
+        }catch(NoResultException ex){
+            System.out.println("Dato non disponibile");
+            return 0;
+        }
+
+    }
+
 }

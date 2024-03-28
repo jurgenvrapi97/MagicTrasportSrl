@@ -1,7 +1,6 @@
 package org.example;
 
-import Dao.AbbonamentoDao;
-import Dao.DistributoreDao;
+import Dao.*;
 import com.github.javafaker.Faker;
 import entities.*;
 import enums.Stato;
@@ -37,6 +36,11 @@ public class Application {
         distributoreDao.findDistributoreAttivo();
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
+        TicketDao ticketDao=new TicketDao(em);
+        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
+        TrattaDao trattaDao=new TrattaDao(em);
+        trattaDao.getAverageTimeOfRoute(2);
+        trattaDao.getTripCountForMezzoOnTratta(1,2);
 
 
         em.close();
@@ -228,14 +232,14 @@ public class Application {
 
 
 
-    //---------------------------------------------------------------------------//
-    /*SCANNER: LATO UTENTE (da completare)
-    int scelta = 0;
-    long  tratta_id, ticket_id;
-    Scanner scanner = new Scanner(System.in);
-    do
+//SCANNER: LATO UTENTE (da completare)
 
-    {
+   /* Scanner scanner = new Scanner(System.in);
+    int scelta;
+    do  {
+
+        EntityManager em = emf.createEntityManager();
+
         System.out.println("----------- BENVENUTO NELLA SEZIONE UTENTE DELLA MAGICTRANSPORTsrl, SCEGLI UN'OPERAZIONE:-----------");
         System.out.println("1. Biglietteria");
         System.out.println("2. Abbonamento");
@@ -243,29 +247,38 @@ public class Application {
         System.out.println("0. Esci");
 
 
-        int scelta = scanner.nextInt();
+        scelta =scanner.nextInt();
+        scanner.nextLine();
         switch (scelta) {
-           // case 0:
-              //  System.out.println("Uscita dal programma in corso...");
-               // System.out.println("Grazie per aver utilizzato i nostri servizi");
-              //  scanner.close();
+
 
             case 1:
                 System.out.println("1.Acquista biglietto");
                 System.out.println("2.Convalida biglietto");
 
                 int scelta1 = scanner.nextInt();
-                switch (scelta1){
+                switch (scelta1) {
                     case 1:
+                        TicketDao ticketDao = new TicketDao(em);
+                        Ticket ticket = new Ticket();
+                        ticketDao.saveTicket(ticket);
                         System.out.println("Biglietto acquistato con successo!");
                         break;
 
                     case 2:
                         System.out.println("Inserisci l'ID del biglietto per convalidarlo");
                         int ticketId = scanner.nextInt();
+                        Ticket ticketToValidate = TicketDao.findTicketById(ticketId);
+                        if (ticketToValidate != null) {
+
+                            TicketDao.ConvalidazioneBiglietto(ticketToValidate);
+                        } else {
+                            System.out.println("Nessun biglietto con l'ID specificato.");
+                        }
                         break;
                 }
-           break;
+                break;
+
             case 2:
                 System.out.println("Acquista un abbonamento");
                 System.out.println("Verifica data di scadenza abbonamento");
@@ -273,37 +286,82 @@ public class Application {
                 int scelta2 = scanner.nextInt();
                 switch (scelta2) {
                     case 1:
-                        System.out.println("Inserisci il numero della tua card");
+                        System.out.println("Sei provvisto di una card? (S/N)");
+                        String risposta = scanner.next();
+                        if (risposta.equalsIgnoreCase("S")) {
+                            System.out.println("Inserisci il numero della tua card");
+                            long cardId = scanner.nextLong();
+
+
+                            Card card = CardsDao.findIsExpired(cardId);
+                            if (card != null) {
+
+                                System.out.println("Seleziona il tipo di abbonamento:");
+                                System.out.println("1. Mensile");
+                                System.out.println("2. Settimanale");
+                                int tipoScelto = scanner.nextInt();
+
+
+                                LocalDate dataInizio = LocalDate.now();
+                                LocalDate dataScadenza;
+                                TipoAbbonamento tipoAbbonamento;
+                                switch (tipoScelto) {
+                                    case 1:
+                                        dataScadenza = dataInizio.plusWeeks(1);
+                                        tipoAbbonamento = TipoAbbonamento.SETTIMANALE;
+                                        break;
+                                    case 2:
+                                        dataScadenza = dataInizio.plusMonths(1);
+                                        tipoAbbonamento = TipoAbbonamento.MENSILE;
+                                        break;
+
+                                    default:
+                                        System.out.println("Scelta non valida.");
+                                        break;
+                                }
+
+
+                                Abbonamento abbonamento = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento, null);
+                                abbonamento.setCard(card);
+                                AbbonamentoDao.saveAbbonamento(abbonamento);
+                                System.out.println("Abbonamento acquistato con successo!");
+                            } else {
+                                System.out.println("La card non esiste o è scaduta. Impossibile procedere all'acquisto dell'abbonamento.");
+                            }
+                        } else if (risposta.equalsIgnoreCase("N")) {
+                            System.out.println("Spiacenti, per acquistare un abbonamento è necessario essere provvisti di una card.");
+                        } else {
+                            System.out.println("Scelta non valida. Riprova.");
+                        }
                         break;
 
-                        case 2:
-                    System.out.println("Inserisci il numero della tua card");
+                    case 2:
+                        System.out.println("Inserisci il numero della tua card");
+                        int cardId = scanner.nextInt();
+
+
+                        if (isCardValid(cardId)) {
+
+                            System.out.println("La card esiste. Puoi procedere all'acquisto dell'abbonamento.");
+                        } else {
+
+                            System.out.println("La card non esiste. Impossibile procedere all'acquisto dell'abbonamento.");
+                        }
+                        break;
                 }
-          }
-    }*/
+                break;
 
-/*
-=======
-            System.out.println("Inserisci l'id di un mezzo per vedere i biglietti vitimati in totale su di esso:");
-            long Mezzo_id = Long.parseLong(scanner.nextLine());
-            md.biglietti_vidimati(md.findMezzoById(mezzo_id));
-            break;
 
-            case 2:
-            System.out.println("Inserisci una data per visualizzare i biglietti emessi: ");
-            LocalDate data = LocalDate.parse(scanner.nextLine());
-            List<Ticket> ticket = rd.ticketsForDate(data);
+            case 0:
+                System.out.println("Uscita dal programma in corso...");
+                System.out.println("Grazie per aver utilizzato i nostri servizi");
+                scanner.close();
+                break;
+            default:
+                System.out.println("Scelta non valida. Riprova.");
+                break;
+        }
+    */
 
-            if (ticket.isEmpty()) {
-                System.out.println("Non ci sono biglietti emessi in questa data.");
-            } else {
-                System.out.println("Numero biglietti emessi in data " + data + " :");
-                for (Ticket tickets1 : ticket) {
-                    System.out.println(tickets1);
-                }
-            }
-
-        } 
-
- */
-
+//>>>>>>> master
+//}
