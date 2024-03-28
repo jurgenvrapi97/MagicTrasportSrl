@@ -48,7 +48,7 @@ public class TicketDao {
         }
     }
 
-    public  void ConvalidazioneBiglietto(Ticket ticket) {
+    public void ConvalidazioneBiglietto(Ticket ticket) {
         EntityTransaction transaction = entityManager.getTransaction();
 
         try {

@@ -161,7 +161,6 @@ public class Application {
         System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
         System.out.println("4) Cerca i periodi di servizio e manutenzione di un mezzo in base alla data;");
         System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
-        System.out.println("6) Verifica la validità dell'abbonamento di un'utente in base al suo numero di tessera");
         System.out.println("0) Esci dal programma; ");
 
 

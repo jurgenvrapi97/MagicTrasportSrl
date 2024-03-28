@@ -15,7 +15,7 @@ public class AbbonamentoDao {
         this.em = em;
     }
 
-    public  void saveAbbonamento(Abbonamento abbonamento) {
+    public void saveAbbonamento(Abbonamento abbonamento) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(abbonamento);
