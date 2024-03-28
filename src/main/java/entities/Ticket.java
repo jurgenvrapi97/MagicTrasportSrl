@@ -14,8 +14,7 @@ import java.time.LocalDate;
 public class Ticket {
 
     // Chiave Primaria composta da userId
-    @Column(name = "user_id")
-    private int userId;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,32 +26,51 @@ public class Ticket {
     @Column(name = "validita")
     private String validita;
 
+    @Column(name = "data_vidimazione")
+    private LocalDate dataVidimazione;
+
     @ManyToOne
     @JoinColumn(name = "distributore_id")
     private Distributore distributore;
 
 
     @ManyToOne
-    @JoinColumn(name = "mezzo_id")
-
+    @JoinColumn(name="mezzo_id")
     private Mezzo mezzo;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     //----------------------------//
 
     public Ticket() {
 
     }
 
-    public int getUserId() {
-        return userId;
+    public Ticket(LocalDate dataEmisione, String validita, LocalDate dataVidimazione, Distributore distributore, Mezzo mezzo, User user) {
+        this.dataEmisione = dataEmisione;
+        this.validita = validita;
+        this.dataVidimazione = dataVidimazione;
+        this.distributore = distributore;
+        this.mezzo = mezzo;
+        this.user = user;
     }
 
+
+    public LocalDate getDataEmisione() {
+        return dataEmisione;
+    }
+
+    public LocalDate getDataVidimazione() {
+        return dataVidimazione;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     public int getTicketId() {
         return ticketId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public void setTicketId(int ticketId) {
@@ -65,6 +83,19 @@ public class Ticket {
 
     public void setValidita(String validita) {
         this.validita = validita;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public void setDataVidimazione(LocalDate dataVidimazione) {
+        this.dataVidimazione = dataVidimazione;
+    }
+
+    public void setDataEmisione(LocalDate dataEmisione) {
+        this.dataEmisione = dataEmisione;
     }
 
     public Distributore getDistributore() {
@@ -84,14 +115,19 @@ public class Ticket {
         this.mezzo = mezzo;
     }
 
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "userId=" + userId +
-                ", ticketId=" + ticketId +
-                ", dataEmisione=" + dataEmisione +
-                ", validità='" + validita + '\'' +
-                '}'+"\n";
+
+
+    public void vidimare() {
+        // Controlla se il biglietto è già stato vidimato
+        if (this.dataVidimazione != null) {
+            throw new IllegalStateException("Il biglietto è già stato vidimato.");
+        }
+
+        // Vidima il biglietto
+        this.dataVidimazione = LocalDate.now();
+        this.validita = "non valido";
+        // Incrementa il contatore del mezzo
+        this.mezzo.incrementaBigliettiVidimati();
     }
 }
 

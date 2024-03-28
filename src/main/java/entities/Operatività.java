@@ -28,6 +28,8 @@ public class Operatività {
     @JoinColumn(name="mezzo_id")
     private Mezzo mezzo;
 
+    public Operatività(){}
+
     public Operatività(Date dataInizioManutenzione, Date dataFineManutenzione, Date dataInizioServizio, Date dataFineServizio, Mezzo mezzo) {
         this.dataInizioManutenzione = dataInizioManutenzione;
         this.dataFineManutenzione = dataFineManutenzione;
@@ -45,7 +47,7 @@ public class Operatività {
     }
 
     public Temporal getDataInizioManutenzione() {
-        return dataInizioManutenzione;
+        return (Temporal) dataInizioManutenzione;
     }
 
     public void setDataInizioManutenzione(Date dataInizioManutenzione) {
@@ -61,7 +63,7 @@ public class Operatività {
     }
 
     public Temporal getDataInizioServizio() {
-        return dataInizioServizio;
+        return (Temporal) dataInizioServizio;
     }
 
     public void setDataInizioServizio(Date dataInizioServizio) {

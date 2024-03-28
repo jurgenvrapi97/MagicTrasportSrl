@@ -1,6 +1,9 @@
 package entities;
 
 import jakarta.persistence.*;
+
+import java.util.ListIterator;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -46,6 +49,8 @@ public class User {
         return card;
     }
 
+
+
     //setters
 
     public void setName(String name) {
@@ -76,6 +81,7 @@ public class User {
                 ", age=" + age +
                 '}';
     }
+
 
 
 }
