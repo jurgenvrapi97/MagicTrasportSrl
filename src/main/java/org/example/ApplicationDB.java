@@ -26,33 +26,36 @@ public class ApplicationDB {
 
 
         // ho aggiunto i metodi e il dao per timbrare uno specifico biglietto con il suo id per far si che lo vidimi
-      TicketDao ticketDao=new TicketDao(em);
-      ticketDao.findVidimatiTicketsByMezzoId(1);
-//        OperativitaDao operativitaDAO = new OperativitaDao(em);
-//        System.out.println("giorni di manutenzione: "+operativitaDAO.getGiorniDiManutenzione(8));
-//        System.out.println("giorni di servizio: " + operativitaDAO.getGiorniDiServizio(8));
+        TicketDao ticketDAO = new TicketDao(em);
+        ticketDAO.vidimareTicket(1);
+        ticketDAO.vidimareTicket(4);
+        MezzoDao mezzoDao=new MezzoDao(em);
+        mezzoDao.getBigliettiConvalidatiPerMezzo(8);
+        OperativitaDao operativitaDAO = new OperativitaDao(em);
+        System.out.println("giorni di manutenzione: "+operativitaDAO.getGiorniDiManutenzione(8));
+        System.out.println("giorni di servizio: " + operativitaDAO.getGiorniDiServizio(8));
 
         // per riempire il database non si possono usare tutti i metoti contemporaneamente c'è un ordine
 
 
 
 
-        // 1 generateUsersCard(50);
-        // 2 generateDistributori(20);
-      // 3 ( abbonamenti ha un po di problemi con gli id univoci quindi conviene eseguirlo 2 volte per avere abbastanza abbonamenti)generateAbbonamenti(20);
+//         generateUsersCard(50);
+//        generateDistributori(20);
+      // 3 ( abbonamenti ha un po di problemi con gli id univoci quindi conviene eseguirlo 2 volte per avere abbastanza abbonamenti)
+//     generateAbbonamenti(20);
 
-        // 4 generateTickets(100);
-        //  5  generateMezzi(30);
+         //generateTickets(100);
+          //generateMezzi(30);
 //       AbbonamentoDAO abbonamentoDAO=new AbbonamentoDAO(em);
 //       abbonamentoDAO.findNotExpiredByCardN(1);
-        // 6 aggiornaTratteMezzi();
+        //aggiornaTratteMezzi();
 
 
 
         // per adesso operatività non lo eseguite per pensare meglio a come farlo funzionare per ottenere cosa ci serve
-//       generateOperativita(30);
 
-       // generateOperativita();
+       //generateOperativita();
 
 
 

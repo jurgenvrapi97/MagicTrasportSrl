@@ -43,6 +43,7 @@ public class Application {
         trattaDao.getTripCountForMezzoOnTratta(152,1);
         ticketDao.findTicketsByUserId(1);
 
+
         em.close();
         emf.close();
 
@@ -147,7 +148,7 @@ public class Application {
 
 
     //  Imposto la struttura dello scanner dalla parte del gestore, poi bisognerà cambiare alcuni valori e nomi
-
+ // riga di prova
     /* 
     int scelta = 0;
         long mezzo_id, tratta_id, ticket_id;
@@ -161,7 +162,6 @@ public class Application {
         System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
         System.out.println("4) Cerca i periodi di servizio e manutenzione di un mezzo in base alla data;");
         System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
-        System.out.println("6) Verifica la validità dell'abbonamento di un'utente in base al suo numero di tessera");
         System.out.println("0) Esci dal programma; ");
 
 
