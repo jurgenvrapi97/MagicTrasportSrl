@@ -37,11 +37,11 @@ public class Application {
         abbonamentoDAO.findAbbonamentiEmessiByLocation("Strada Teseo 84, Cattaneo umbro, SR 63302");
         abbonamentoDAO.findAbbonamentiEmessiByTimeLapse(LocalDate.of(2024,02,28),LocalDate.now());
         TicketDao ticketDao=new TicketDao(em);
-        ticketDao.findBigliettiEmessiByTimeLapse(LocalDate.of(2024,03,11),LocalDate.now());
+
         TrattaDao trattaDao=new TrattaDao(em);
         trattaDao.getAverageTimeOfRoute(23);
         trattaDao.getTripCountForMezzoOnTratta(152,1);
-
+        ticketDao.findTicketsByUserId(1);
 
         em.close();
         emf.close();

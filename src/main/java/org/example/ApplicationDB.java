@@ -26,11 +26,11 @@ public class ApplicationDB {
 
 
         // ho aggiunto i metodi e il dao per timbrare uno specifico biglietto con il suo id per far si che lo vidimi
-//        TicketDAO ticketDAO = new TicketDAO(em);
-//        ticketDAO.vidimareTicket(1);
-        OperativitaDao operativitaDAO = new OperativitaDao(em);
-        System.out.println("giorni di manutenzione: "+operativitaDAO.getGiorniDiManutenzione(8));
-        System.out.println("giorni di servizio: " + operativitaDAO.getGiorniDiServizio(8));
+      TicketDao ticketDao=new TicketDao(em);
+      ticketDao.findVidimatiTicketsByMezzoId(1);
+//        OperativitaDao operativitaDAO = new OperativitaDao(em);
+//        System.out.println("giorni di manutenzione: "+operativitaDAO.getGiorniDiManutenzione(8));
+//        System.out.println("giorni di servizio: " + operativitaDAO.getGiorniDiServizio(8));
 
         // per riempire il database non si possono usare tutti i metoti contemporaneamente c'è un ordine
 

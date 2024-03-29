@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e1146c58-92e2-4ad7-9d7f-5f077e05cdeb" name="Changes" comment="riempimento del db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/OperativitaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Operatività.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Operatività.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TicketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TicketDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/TrattaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/TrattaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ApplicationDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ApplicationDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

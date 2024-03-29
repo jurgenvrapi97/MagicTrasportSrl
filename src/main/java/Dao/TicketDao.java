@@ -3,6 +3,7 @@ package Dao;
 
 import entities.Mezzo;
 import entities.Ticket;
+import entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -84,18 +85,48 @@ public class TicketDao {
         TypedQuery<Ticket> query = entityManager.createQuery("SELECT t FROM Ticket t", Ticket.class);
         return query.getResultList();
     }
-    public List<Ticket>findBigliettiEmessiByTimeLapse(LocalDate startDate,LocalDate endDate){
-        TypedQuery<Ticket>query=entityManager.createNamedQuery("findBigliettiEmessiByTimeLapse", Ticket.class);
-        query.setParameter("start_date",startDate);
-        query.setParameter("end_date",endDate);
-        try{ List<Ticket>findings=query.getResultList();
-            System.out.println("biglietti emessi nel periodo dal "+startDate+" al "+endDate+": "+findings.toString());
-            return findings;
-            }
-        catch (NoResultException ex){
-            System.out.println("Nessun ticket trovato per questo lasso di tempo");
+
+
+    public List<Ticket> findVidimatiTicketsByMezzoId(int mezzoId) {
+        Mezzo mezzo = entityManager.find(Mezzo.class, mezzoId);
+        if (mezzo == null) {
+            System.out.println("Nessun mezzo trovato con l'ID fornito");
             return null;
         }
-
+        TypedQuery<Ticket> query = entityManager.createQuery(
+                "SELECT t FROM Ticket t WHERE t.mezzo = :mezzo AND t.validita = 'non valido'",
+                Ticket.class);
+        query.setParameter("mezzo", mezzo);
+        try {
+            List<Ticket> tickets = query.getResultList();
+            System.out.println("Biglietti vidimati per il mezzo con ID " + mezzoId + ": " + tickets.toString());
+            return tickets;
+        } catch (NoResultException ex) {
+            System.out.println("Nessun ticket vidimato trovato per questo mezzo");
+            return null;
+        }
     }
+
+    public List<Ticket> findTicketsByUserId(int userId) {
+        User user = entityManager.find(User.class, userId);
+        if (user == null) {
+            System.out.println("Nessun utente trovato con l'ID fornito");
+            return null;
+        }
+        TypedQuery<Ticket> query = entityManager.createQuery(
+                "SELECT t FROM Ticket t WHERE t.user = :user",
+                Ticket.class);
+        query.setParameter("user", user);
+        try {
+            List<Ticket> tickets = query.getResultList();
+            System.out.println("Biglietti per l'utente con ID " + userId + ": " + tickets.toString());
+            return tickets;
+        } catch (NoResultException ex) {
+            System.out.println("Nessun ticket trovato per questo utente");
+            return null;
+        }
+    }
+
+
+
 }
