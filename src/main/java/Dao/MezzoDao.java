@@ -51,7 +51,7 @@ public class MezzoDao {
             return tempoPercorrenzaMedia;
         }
     }
-    public int getBigliettiConvalidatiPerMezzo(int mezzo_id){
+    public int getBigliettiConvalidatiPerMezzo(long mezzo_id){
         TypedQuery<Integer>q=em.createQuery("SELECT m.biglietti_vidimati FROM Mezzo m WHERE m.id=:mezzo_id", Integer.class);
         q.setParameter("mezzo_id",mezzo_id);
         try{Integer result=q.getSingleResult();

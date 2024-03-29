@@ -74,7 +74,6 @@ public class TicketDao {
         query.setParameter("start_date",startDate);
         query.setParameter("end_date",endDate);
         try{ List<Ticket>findings=query.getResultList();
-            System.out.println("biglietti emessi nel periodo dal "+startDate+" al "+endDate+": "+findings.toString());
             return findings;
             }
         catch (NoResultException ex){
