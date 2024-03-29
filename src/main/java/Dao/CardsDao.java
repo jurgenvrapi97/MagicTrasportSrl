@@ -57,7 +57,6 @@ public class CardsDao {
         transaction.begin();
         em.persist(card);
         transaction.commit();
-        System.out.println("Carta"+ card.toString()+" salvata");
     }
     public  Card findIsExpired(long card_id){
         TypedQuery<Card>query=em.createNamedQuery("findIsExpired", Card.class);
