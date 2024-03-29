@@ -79,7 +79,7 @@ public class Application {
                             TicketDao ticketDao = new TicketDao(em);
                             DistributoreDao distributoreDao = new DistributoreDao(em);
                             MezzoDao mezzoDao = new MezzoDao(em);
-                            Ticket ticket = new Ticket(LocalDate.now(), "valido", null, distributoreDao.getById(104), mezzoDao.findMezzoById(25), null);
+                            Ticket ticket = new Ticket(LocalDate.now(), "valido", null, distributoreDao.getById(2), mezzoDao.findMezzoById(25), null);
                             ticketDao.saveTicket(ticket);
                             System.out.println("Biglietto acquistato con successo!");
                             break;
@@ -126,7 +126,7 @@ public class Application {
                                         case 1:
                                             DistributoreDao distributoreDao = new DistributoreDao(em);
                                             Random rdm = new Random();
-                                            Distributore nDistributore = distributoreDao.getById(rdm.nextInt(102, 112));
+                                            Distributore nDistributore = distributoreDao.getById(rdm.nextInt(1, 20));
                                             dataScadenza = dataInizio.plusWeeks(1);
                                             tipoAbbonamento = TipoAbbonamento.SETTIMANALE;
                                             Abbonamento abbonamento = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento, nDistributore);
@@ -139,7 +139,7 @@ public class Application {
                                         case 2:
                                             DistributoreDao distributoreDao1 = new DistributoreDao(em);
                                             Random rdm1 = new Random();
-                                            Distributore nDistributore1 = distributoreDao1.getById(rdm1.nextInt(102, 112));
+                                            Distributore nDistributore1 = distributoreDao1.getById(rdm1.nextInt(1, 20));
                                             dataScadenza = dataInizio.plusWeeks(1);
                                             tipoAbbonamento = TipoAbbonamento.MENSILE;
                                             Abbonamento abbonamento1 = new Abbonamento(dataInizio, dataScadenza, tipoAbbonamento, nDistributore1);

@@ -39,8 +39,13 @@ public class TrattaDao {
             Long result=query.getSingleResult();
             Random rand = new Random();
             int randomNum = rand.nextInt((15 - 5) + 1) + 5;
-            System.out.println("La tratta con id: "+tratta_id+" è percorsa dal mezzo n."+mezzo_id+" "+result+" volte. Tempo di percorrenza effetivo: " + (getAverageTimeOfRoute(tratta_id) + randomNum) + " minuti.");
-            return result;
+            if (result!=0) {
+                System.out.println("La tratta con id: " + tratta_id + " è percorsa dal mezzo n." + mezzo_id + " " + result + " volte. Tempo di percorrenza effetivo: " + (getAverageTimeOfRoute(tratta_id) + randomNum) + " minuti.");
+                return result;
+            }else {
+                System.out.println("il mezzo non ha mai percorso questa tratta :)");
+           return 0 ;}
+
         }catch(NoResultException ex){
             System.out.println("Dato non disponibile");
             return 0;
