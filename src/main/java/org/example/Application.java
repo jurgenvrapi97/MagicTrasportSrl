@@ -228,9 +228,11 @@ public class Application {
             System.out.println("1) Cerca i biglietti vidimati su un mezzo specifico; ");
             System.out.println("2) Cerca i biglietti emessi in base alla data; ");
             System.out.println("3) Cerca i biglietti venduti da uno specifico distributore/rivenditore; ");
-            System.out.println("4) Cerca i periodi di servizio e manutenzione di un mezzo in base alla data;");
-            System.out.println("5) Verifica il tempo di percorrenza medio in base alla tratta");
-            System.out.println("6) Torna al menu principale ");
+            System.out.println("4) Visualizza distributori attivi;");
+            System.out.println("5) Cerca i periodi di servizio del mezzo;");
+            System.out.println("6) Cerca i periodi di manutenzione del mezzo;");
+            System.out.println("7) Visualizza le informazioni di percorrenza di un mezzo su una tratta:");
+            System.out.println("8) Torna al menu principale ");
 
 
             scelta = scanner.nextInt();
@@ -261,39 +263,46 @@ public class Application {
                         for (Ticket tickets1 : ticket) {
                             System.out.println(tickets1);
                         }
-                    }
+                    }break;
 
-//                case 3:
-//                    System.out.println("Immetti l'id del distributore:");
-//                    long distributore_Id = Long.parseLong(scanner.nextLine());
-//                    System.out.println("Questo distributore ha venduto " + rd.nBigliettiEmessi(distributore_id).size() + " ticket");
-//                    break;
-//
-//
-//                case 4:
-//                    System.out.println("Immetti una data per vedere lo stato del mezzo:");
-//                    String input = scanner.nextLine();
-//                    LocalDate StatoMezzo;
-//                    try {
-//                        StatoMezzo = LocalDate.parse(input);
-//                    } catch (DateTimeParseException e) {
-//                        System.out.println("Data non valida. Accertati di inserire la data nel formato YYYY-MM-DD.");
-//                        break;
-//                    }
-//
-//                    System.out.println("Immetti l'id del mezzo di cui vuoi vedere lo stato nella data precedentemente selezionata:");
-//                    mezzo_Id = Long.parseLong(scanner.nextLine());
-//                    Mezzo mezzoX = em.find(Mezzo.class, mezzo_Id);
-//
-//                    if (mezzoX != null | dataStatoVeicolo != null) {
-//                        System.out.println("Stato veicolo in data " + dataStatoVeicolo + " :");
-//                        md.ricercaPeriodiDiStato(dataStatoVeicolo, mezzoX);
-//                    } else {
-//                        System.out.println("Non è stato trovato alcun mezzo con id: " + mezzoId + " in data " + dataStatoVeicolo);
-//                    }
-//                    break;
+                case 3:
+                    System.out.println("Immetti la location del distributore:");
+                    String distributore_location = scanner.nextLine();
+                    DistributoreDao distributoreDao =new DistributoreDao(em);
+                    System.out.println("Questo distributore in"+distributore_location+" ha venduto " + distributoreDao.findBigliettiEmessiByLocation(distributore_location).size() + " ticket");
+                    break;
 
+                case 4:
+                    System.out.println("Visualizza distributori attivi:");
+                    DistributoreDao distributoreDao2 =new DistributoreDao(em);
+                    distributoreDao2.findDistributoreAttivo();
+                    break;
+
+
+                case 5:
+                    System.out.println("Immetti l'id del mezzo per vederne lo stato di servizio:");
+                    long input = Long.parseLong(scanner.nextLine());
+                    OperativitaDao operativitaDao=new OperativitaDao(em);
+                    System.out.println(operativitaDao.getGiorniDiServizio(input)+" giorni");
+                    break;
                 case 6:
+                    System.out.println("Immetti l'id del mezzo per vederne lo stato di manutenzione:");
+                    long input1 = Long.parseLong(scanner.nextLine());
+                    OperativitaDao operativitaDao1=new OperativitaDao(em);
+                    System.out.println(operativitaDao1.getGiorniDiManutenzione(input1)+" giorni"
+                    );
+
+                    break;
+                case 7:
+
+                    System.out.println("inserisci l'id del mezzo");
+                    long in_m=Long.parseLong(scanner.nextLine());
+                    System.out.println("inserisci l'id della tratta");
+                    long in_t=Long.parseLong(scanner.nextLine());
+                    TrattaDao trattaDao=new TrattaDao(em);
+                    trattaDao.getTripCountForMezzoOnTratta(in_t,in_m);
+                    break;
+                case 8:
                     System.out.println("Tornando al menu principale");
                     return;
                 default:
@@ -301,7 +310,7 @@ public class Application {
                     break;
 
             }
-        } while (scelta != 6);
+        } while (scelta != 8);
 
     }
 }
