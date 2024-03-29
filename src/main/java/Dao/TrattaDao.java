@@ -44,7 +44,7 @@ public class TrattaDao {
                 return result;
             }else {
                 System.out.println("il mezzo non ha mai percorso questa tratta :)");
-                return 0 ;}
+           return 0 ;}
 
         }catch(NoResultException ex){
             System.out.println("Dato non disponibile");
